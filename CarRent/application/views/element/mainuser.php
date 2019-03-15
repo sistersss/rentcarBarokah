@@ -164,7 +164,11 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-7 site-section-heading text-center pt-4">
+reinaTrycha
+            
+
             <h2>BANYAK DIMINATI</h2>
+master
           </div>
         </div>
         <div class="row">
