@@ -58,11 +58,13 @@
               </ul>
             </li>
             <li><a href="#">Contact Us</a></li>
-            <?php if(!empty($this->session->userdata('id_pelanggan'))){ ?>
+            <?php if (!empty($this->session->userdata('id_pelanggan'))) { ?>
             <li style="right: 10em; position: absolute;"><a href="<?php echo base_url() ?>index.php/User/logout">Logout</a></li>
-            <?php } else { ?>
+            <?php 
+          } else { ?>
             <li style="right: 10em; position: absolute;"><a href="<?php echo base_url() ?>index.php/User">Login</a></li>
-            <?php } ?>
+            <?php 
+          } ?>
           </ul>
         </div>
       </nav>
@@ -258,6 +260,6 @@
   <script src="<?php echo base_url() ?>assets/user/js/aos.js"></script>
 
   <script src="<?php echo base_url() ?>assets/user/js/main.js"></script>
-    
+  
   </body>
 </html>
