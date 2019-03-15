@@ -52,9 +52,9 @@
             <li class="has-children">
               <a href="#">Kategori Mobil</a>
               <ul class="dropdown">
-                <li><a href="#">Kategori 1</a></li>
-                <li><a href="#">Kategori 2</a></li>
-                <li><a href="#">Kategori 3</a></li>
+                <li><a href="#">SUV</a></li>
+                <li><a href="#">SEDAN</a></li>
+                <li><a href="#">SUPER CAR</a></li>
               </ul>
             </li>
             <li><a href="#">Contact Us</a></li>
