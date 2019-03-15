@@ -58,11 +58,13 @@
               </ul>
             </li>
             <li><a href="#">Contact Us</a></li>
-            <?php if(!empty($this->session->userdata('id_pelanggan'))){ ?>
+            <?php if (!empty($this->session->userdata('id_pelanggan'))) { ?>
             <li style="right: 10em; position: absolute;"><a href="<?php echo base_url() ?>index.php/User/logout">Logout</a></li>
-            <?php } else { ?>
+            <?php 
+          } else { ?>
             <li style="right: 10em; position: absolute;"><a href="<?php echo base_url() ?>index.php/User">Login</a></li>
-            <?php } ?>
+            <?php 
+          } ?>
           </ul>
         </div>
       </nav>
@@ -162,7 +164,11 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-7 site-section-heading text-center pt-4">
-            <h2>Mobil Termewah</h2>
+reinaTrycha
+            
+
+            <h2>BANYAK DIMINATI</h2>
+master
           </div>
         </div>
         <div class="row">
@@ -258,6 +264,6 @@
   <script src="<?php echo base_url() ?>assets/user/js/aos.js"></script>
 
   <script src="<?php echo base_url() ?>assets/user/js/main.js"></script>
-    
+  
   </body>
 </html>
