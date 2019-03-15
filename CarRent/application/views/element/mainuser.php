@@ -68,7 +68,13 @@
       </nav>
     </header>
 
-    <div class="site-blocks-cover" style="background-image: url(<?php echo base_url() ?>assets/user/images/hero_1.jpg);" data-aos="fade">
+    <br>
+    <br>
+    <h2 align="center">Nikmati Perjalanan Anda Bersama "Car Rent Barokah"</h2>
+    <br>
+    <h4 align="center">Kepuasan Anda Prioritas Kami</h3>
+    <br>
+    <div class="site-blocks-cover" style="background-image: url(<?php echo base_url() ?>assets/user/images/Mobil0.jpg);" data-aos="fade" >
       <div class="container">
         <div class="row align-items-start align-items-md-center justify-content-end">
           
@@ -89,60 +95,60 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="<?php echo base_url() ?>assets/user/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="<?php echo base_url() ?>assets/user/images/Mobil1.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">Tank Top</a></h3>
-                    <p class="mb-0">Finding perfect t-shirt</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a href="#">Mobil Alphard</a></h3>
+                    <p class="mb-0">AG 7882 RI</p>
+                    <p class="text-primary font-weight-bold">Rp 1.000.000 per hari</p>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="<?php echo base_url() ?>assets/user/images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="<?php echo base_url() ?>assets/user/images/Mobil3.jpg" alt="Image placeholder" class="img-fluid" >
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a href="#">Suzuki Ertiga</a></h3>
+                    <p class="mb-0">N 1322 RE</p>
+                    <p class="text-primary font-weight-bold">Rp 350.000 per hari</p>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="<?php echo base_url() ?>assets/user/images/cloth_2.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="<?php echo base_url() ?>assets/user/images/Mobil8.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">Polo Shirt</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a href="#">Daihatsu Xenia</a></h3>
+                    <p class="mb-0"></p>N 4654 KA</p>
+                    <p class="text-primary font-weight-bold">Rp 250.000 per hari</p>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="<?php echo base_url() ?>assets/user/images/cloth_3.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="<?php echo base_url() ?>assets/user/images/Mobil15.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">T-Shirt Mockup</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a href="#">Mitsubishi Xpander</a></h3>
+                    <p class="mb-0">N 1307 GE</p>
+                    <p class="text-primary font-weight-bold">Rp 300.000 per hari</p>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="<?php echo base_url() ?>assets/user/images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="<?php echo base_url() ?>assets/user/images/Mobil10.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a href="#">Mini Bus</a></h3>
+                    <p class="mb-0">N 7781 NA</p>
+                    <p class="text-primary font-weight-bold">Rp 300.000 per hari</p>
                   </div>
                 </div>
               </div>
@@ -165,60 +171,60 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="<?php echo base_url() ?>assets/user/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="<?php echo base_url() ?>assets/user/images/Mobil8.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">Tank Top</a></h3>
-                    <p class="mb-0">Finding perfect t-shirt</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a href="#">Daihatsu Xenia</a></h3>
+                    <p class="mb-0">N 4654 KA</p>
+                    <p class="text-primary font-weight-bold">Rp 250.000 per hari</p>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="<?php echo base_url() ?>assets/user/images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="<?php echo base_url() ?>assets/user/images/Mobil15.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a href="#">Mitsubishi Xpander</a></h3>
+                    <p class="mb-0">N 1307 GE</p>
+                    <p class="text-primary font-weight-bold">Rp 300.000 per hari</p>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="<?php echo base_url() ?>assets/user/images/cloth_2.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="<?php echo base_url() ?>assets/user/images/Mobil13.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">Polo Shirt</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a href="#">Honda Civic</a></h3>
+                    <p class="mb-0">N 6332 TA</p>
+                    <p class="text-primary font-weight-bold">Rp 400.000 per hari</p>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="<?php echo base_url() ?>assets/user/images/cloth_3.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="<?php echo base_url() ?>assets/user/images/Mobil3.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">T-Shirt Mockup</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a href="#">Suzuki Ertiga</a></h3>
+                    <p class="mb-0">N 1322 RE</p>
+                    <p class="text-primary font-weight-bold">Rp 350.000 per hari</p>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="<?php echo base_url() ?>assets/user/images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="<?php echo base_url() ?>assets/user/images/Mobil10.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a href="#">Mini Bus</a></h3>
+                    <p class="mb-0">N 7781 NA</p>
+                    <p class="text-primary font-weight-bold">Rp 300.000 per hari</p>
                   </div>
                 </div>
               </div>
