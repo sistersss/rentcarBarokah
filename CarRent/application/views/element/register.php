@@ -54,6 +54,14 @@
 					</div>
 
 					<span class="txt1 p-b-4">
+						Email
+					</span>
+					<div class="wrap-input100 validate-input m-b-20" data-validate = "Email is required">
+						<input class="input100" type="email" name="email" >
+						<span class="focus-input100"></span>
+					</div>
+
+					<span class="txt1 p-b-4">
 						Username
 					</span>
 					<div class="wrap-input100 validate-input m-b-20" data-validate = "Username is required">
