@@ -44,6 +44,7 @@ class User_model extends CI_Model {
 		$object = array('nama_pelanggan' => $this->input->post('nama_pelanggan'),
 						'alamat' => $this->input->post('alamat'),
 						'no_telp' => $this->input->post('no_telp'),
+						'email' => $this->input->post('email'),
 						'username' => $this->input->post('username'),
 						'password' => $this->input->post('password'));
 		$this->db->insert("pelanggan", $object);
@@ -54,6 +55,7 @@ class User_model extends CI_Model {
 		$object = array('nama_pelanggan' => $this->input->post('nama_pelanggan'),
 						'alamat' => $this->input->post('alamat'),
 						'no_telp' => $this->input->post('no_telp'),
+						'email' => $this->input->post('email'),
 						'username' => $this->input->post('username'),
 						'password' => $this->input->post('password'));
 		$this->db->where('id_pelanggan', $id);
