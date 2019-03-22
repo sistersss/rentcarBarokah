@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Mar 2019 pada 18.28
+-- Waktu pembuatan: 22 Mar 2019 pada 05.06
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.1
 
@@ -113,14 +113,23 @@ INSERT INTO `pelanggan` (`id_pelanggan`, `nama_pelanggan`, `alamat`, `email`, `n
 
 CREATE TABLE `transaction` (
   `id_transaksi` int(11) NOT NULL,
-  `id_pelanggan` int(5) NOT NULL,
-  `nama_pelanggan` varchar(50) NOT NULL,
-  `tgl_sewa` date NOT NULL,
-  `lama_sewa` varchar(10) NOT NULL,
-  `tgl_kembali` date NOT NULL,
-  `total_biaya` int(5) NOT NULL,
-  `denda` decimal(19,4) NOT NULL
+  `id_pelanggan` int(11) NOT NULL,
+  `id_mobil` int(11) NOT NULL,
+  `tgl_sewa` datetime NOT NULL,
+  `lama_sewa` int(11) NOT NULL,
+  `tgl_kembali` datetime DEFAULT NULL,
+  `total_biaya` int(11) NOT NULL,
+  `denda` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `transaction`
+--
+
+INSERT INTO `transaction` (`id_transaksi`, `id_pelanggan`, `id_mobil`, `tgl_sewa`, `lama_sewa`, `tgl_kembali`, `total_biaya`, `denda`) VALUES
+(1, 1, 1, '2019-03-13 00:00:00', 2, '2019-03-15 00:00:00', 5000000, 0),
+(2, 1, 2, '2019-03-16 00:00:00', 5, '2019-03-21 00:00:00', 12500000, 0),
+(3, 1, 2, '2019-03-23 00:00:00', 3, '2019-03-26 00:00:00', 7500000, 0);
 
 --
 -- Indexes for dumped tables
@@ -157,7 +166,8 @@ ALTER TABLE `pelanggan`
 --
 ALTER TABLE `transaction`
   ADD PRIMARY KEY (`id_transaksi`),
-  ADD KEY `id_pelanggan` (`id_pelanggan`);
+  ADD KEY `id_pelanggan` (`id_pelanggan`),
+  ADD KEY `id_mobil` (`id_mobil`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -185,7 +195,7 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT untuk tabel `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -196,6 +206,13 @@ ALTER TABLE `transaction`
 --
 ALTER TABLE `mobil`
   ADD CONSTRAINT `mobil_ibfk_1` FOREIGN KEY (`id_jenis`) REFERENCES `jenis_mobil` (`id_jenis`);
+
+--
+-- Ketidakleluasaan untuk tabel `transaction`
+--
+ALTER TABLE `transaction`
+  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`id_pelanggan`) REFERENCES `pelanggan` (`id_pelanggan`),
+  ADD CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`id_mobil`) REFERENCES `mobil` (`id_mobil`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

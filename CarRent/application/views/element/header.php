@@ -27,9 +27,9 @@
             <li class="has-children">
               <a href="#">Kategori Mobil</a>
               <ul class="dropdown">
-                <li><a href="#">Kategori 1</a></li>
-                <li><a href="#">Kategori 2</a></li>
-                <li><a href="#">Kategori 3</a></li>
+                <?php foreach($kategori as $k) { ?>
+                <li><a href="#"><?php echo $k['nama_jenis'] ?></a></li>
+                <?php } ?>
               </ul>
             </li>
             <li><a href="#">Contact Us</a></li>
