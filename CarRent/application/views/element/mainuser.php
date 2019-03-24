@@ -26,10 +26,10 @@
     <?php $this->load->view('element/header'); ?>
 
     <?php 
-      if(!empty($content)){
-        echo $content;
-      }
-    ?>
+			if (!empty($content)) {
+				echo $content;
+			}
+			?>
 
     <footer class="site-footer border-top">
       <div class="container">
