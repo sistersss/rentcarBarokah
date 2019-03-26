@@ -3,7 +3,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <img src="<?php echo base_url() ?>assets/image/mobil/<?php echo $m['gambar'] ?>" alt="Image" class="img-fluid">
+            <img src="<?php echo base_url() ?>adm/assets/image/mobil/<?php echo $m['gambar'] ?>" alt="Image" class="img-fluid">
           </div>
           <div class="col-md-6">
             <h2 class="text-black"><?php echo $m['merk_mobil'] ?></h2>
