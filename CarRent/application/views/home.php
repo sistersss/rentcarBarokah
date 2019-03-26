@@ -20,7 +20,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="<?php echo base_url() ?>assets/image/mobil/<?php echo $mb['gambar'] ?>" alt="Image placeholder" class="img-fluid">
+                    <img src="<?php echo base_url() ?>adm/assets/image/mobil/<?php echo $mb['gambar'] ?>" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#"><?php echo $mb['merk_mobil'] ?></a></h3>
@@ -51,7 +51,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="<?php echo base_url() ?>assets/image/mobil/<?php echo $ml['gambar'] ?>" alt="Image placeholder" class="img-fluid">
+                    <img src="<?php echo base_url() ?>adm/assets/image/mobil/<?php echo $ml['gambar'] ?>" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#"><?php echo $ml['merk_mobil'] ?></a></h3>
@@ -67,7 +67,11 @@
         </div>
       </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
     </div>
 =======
 
 >>>>>>> 92b6d6ab3db2db2462e88f1aed76ec8980365257
+=======
+    </div>
+>>>>>>> master

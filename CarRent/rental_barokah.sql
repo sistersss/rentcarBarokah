@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Mar 2019 pada 05.06
+-- Waktu pembuatan: 26 Mar 2019 pada 04.37
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.1
 
@@ -29,11 +29,18 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `id_admin` int(5) NOT NULL,
+  `id_admin` int(11) NOT NULL,
   `nama_admin` varchar(50) NOT NULL,
   `username` varchar(15) NOT NULL,
   `password` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `admin`
+--
+
+INSERT INTO `admin` (`id_admin`, `nama_admin`, `username`, `password`) VALUES
+(1, 'Administrator', 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -52,7 +59,9 @@ CREATE TABLE `jenis_mobil` (
 
 INSERT INTO `jenis_mobil` (`id_jenis`, `nama_jenis`) VALUES
 (1, 'Minibus'),
-(2, 'Sedan');
+(2, 'Sedan'),
+(3, 'Sport'),
+(4, 'Truk');
 
 -- --------------------------------------------------------
 
@@ -80,7 +89,8 @@ CREATE TABLE `mobil` (
 
 INSERT INTO `mobil` (`id_mobil`, `id_jenis`, `merk_mobil`, `warna`, `deskripsi`, `no_polisi`, `tahun_pembuatan`, `kuota_mobil`, `harga_sewa`, `created_at`, `gambar`) VALUES
 (1, 1, 'Avanza Veloz', 'Silver', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.\r\n\r\nEx numquam veritatis debitis minima quo error quam eos dolorum quidem perferendis. Quos repellat dignissimos minus, eveniet nam voluptatibus molestias omnis reiciendis perspiciatis illum hic magni iste, velit aperiam quis.', 'N 3433 UU', 2015, 5, 2500000, '2019-03-21 00:00:00', 'avanza_veloz.jpg'),
-(2, 1, 'Xenia', 'Hitam', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.\r\n\r\nEx numquam veritatis debitis minima quo error quam eos dolorum quidem perferendis. Quos repellat dignissimos minus, eveniet nam voluptatibus molestias omnis reiciendis perspiciatis illum hic magni iste, velit aperiam quis.', 'N 2212 AD', 2015, 8, 2000000, '2019-03-21 00:00:00', 'xenia.jpg');
+(2, 1, 'Xenia', 'Hitam', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.\r\n\r\nEx numquam veritatis debitis minima quo error quam eos dolorum quidem perferendis. Quos repellat dignissimos minus, eveniet nam voluptatibus molestias omnis reiciendis perspiciatis illum hic magni iste, velit aperiam quis.', 'N 2212 AD', 2015, 8, 2000000, '2019-03-21 00:00:00', 'xenia.jpg'),
+(4, 2, 'Suzuki Ayla', 'merah', 'sadhsakjdjabwxbasx\r\nsadjsakxnuqwbxkjbashcbas\r\nsabhxbajbxhasbkcjbjabsbxkjasx\r\nxasbxhsaxhbashbxybsauxas', 'N 9089 AH', 2016, 4, 2000000, '2019-03-26 03:22:29', 'Jellyfish.jpg');
 
 -- --------------------------------------------------------
 
@@ -174,16 +184,22 @@ ALTER TABLE `transaction`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT untuk tabel `jenis_mobil`
 --
 ALTER TABLE `jenis_mobil`
-  MODIFY `id_jenis` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_jenis` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `mobil`
 --
 ALTER TABLE `mobil`
-  MODIFY `id_mobil` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_mobil` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `pelanggan`
