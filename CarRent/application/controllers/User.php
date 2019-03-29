@@ -39,7 +39,12 @@ class User extends CI_Controller {
     			$dlogin = array('id_pelanggan'=>$show->id_pelanggan,
     							'nama_pelanggan'=>$show->nama_pelanggan);
     			$this->session->set_userdata($dlogin);
-    			redirect(base_url().'index.php/HomeUser');
+    			if($this->session->userdata('pesan')=='active'){
+    				redirect(base_url().'index.php/HomeUser/detailMobil/'.$this->session->userdata('id_pesan'));
+    			}
+    			else {
+    				redirect(base_url().'index.php/HomeUser');
+    			}
     			// echo "<script>alert('Berhasil Login');</script>";
     		}
     		else
