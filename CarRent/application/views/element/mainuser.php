@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Shoppers &mdash; Colorlib e-Commerce Template</title>
+    <title>Rental Mobil Barokah</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -23,11 +23,9 @@
   <body>
   
   <div class="site-wrap">
-    <header class="site-navbar" role="banner">
-      <div class="site-navbar-top">
-        <div class="container">
-          <div class="row align-items-center">
+    <?php $this->load->view('element/header'); ?>
 
+<<<<<<< HEAD
             <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
               
             </div>
@@ -227,6 +225,13 @@
         </div>
       </div>
     </div>
+=======
+    <?php 
+      if(!empty($content)){
+        echo $content;
+      }
+    ?>
+>>>>>>> master
 
     <footer class="site-footer border-top">
       <div class="container">
