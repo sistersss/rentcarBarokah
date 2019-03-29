@@ -23,6 +23,16 @@ class Mobil extends CI_Controller {
 		$this->load->view('element/main', $data);
 	}
 
+<<<<<<< HEAD
+=======
+	public function subjenisAjax($id) { 
+       $result = $this->db->where("id_jenis",$id)->get("subjenis")->result();
+
+       echo json_encode($result);
+
+   	}
+
+>>>>>>> master
 	public function upImg()
 	{
 		$config['upload_path'] = './assets/image/mobil/';

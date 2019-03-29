@@ -7,7 +7,11 @@
           </div>
           <div class="col-md-12">
 
+<<<<<<< HEAD
             <form action="#" method="post">
+=======
+            <form action="<?php echo base_url() ?>index.php/HomeUser/transaction/<?php echo $this->uri->segment(3) ?>" method="post">
+>>>>>>> master
               
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
@@ -49,7 +53,11 @@
 
                 <div class="form-group row">
                   <div class="col-lg-6">
+<<<<<<< HEAD
                     <input type="button" class="btn btn-danger btn-lg btn-block" value="Batal">
+=======
+                    <a href="<?php echo base_url() ?>"><input type="button" class="btn btn-danger btn-lg btn-block" value="Batal"></a>
+>>>>>>> master
                   </div>
                   <div class="col-lg-6">
                     <input type="submit" class="btn btn-primary btn-lg btn-block" value="Pesan">

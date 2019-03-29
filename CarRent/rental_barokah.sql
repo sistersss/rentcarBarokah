@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Waktu pembuatan: 26 Mar 2019 pada 04.37
+=======
+-- Waktu pembuatan: 29 Mar 2019 pada 02.14
+>>>>>>> master
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.1
 
@@ -71,7 +75,11 @@ INSERT INTO `jenis_mobil` (`id_jenis`, `nama_jenis`) VALUES
 
 CREATE TABLE `mobil` (
   `id_mobil` int(5) NOT NULL,
+<<<<<<< HEAD
   `id_jenis` int(5) NOT NULL,
+=======
+  `id_subjenis` int(5) NOT NULL,
+>>>>>>> master
   `merk_mobil` varchar(25) NOT NULL,
   `warna` varchar(50) NOT NULL,
   `deskripsi` text NOT NULL,
@@ -87,10 +95,16 @@ CREATE TABLE `mobil` (
 -- Dumping data untuk tabel `mobil`
 --
 
+<<<<<<< HEAD
 INSERT INTO `mobil` (`id_mobil`, `id_jenis`, `merk_mobil`, `warna`, `deskripsi`, `no_polisi`, `tahun_pembuatan`, `kuota_mobil`, `harga_sewa`, `created_at`, `gambar`) VALUES
 (1, 1, 'Avanza Veloz', 'Silver', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.\r\n\r\nEx numquam veritatis debitis minima quo error quam eos dolorum quidem perferendis. Quos repellat dignissimos minus, eveniet nam voluptatibus molestias omnis reiciendis perspiciatis illum hic magni iste, velit aperiam quis.', 'N 3433 UU', 2015, 5, 2500000, '2019-03-21 00:00:00', 'avanza_veloz.jpg'),
 (2, 1, 'Xenia', 'Hitam', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.\r\n\r\nEx numquam veritatis debitis minima quo error quam eos dolorum quidem perferendis. Quos repellat dignissimos minus, eveniet nam voluptatibus molestias omnis reiciendis perspiciatis illum hic magni iste, velit aperiam quis.', 'N 2212 AD', 2015, 8, 2000000, '2019-03-21 00:00:00', 'xenia.jpg'),
 (4, 2, 'Suzuki Ayla', 'merah', 'sadhsakjdjabwxbasx\r\nsadjsakxnuqwbxkjbashcbas\r\nsabhxbajbxhasbkcjbjabsbxkjasx\r\nxasbxhsaxhbashbxybsauxas', 'N 9089 AH', 2016, 4, 2000000, '2019-03-26 03:22:29', 'Jellyfish.jpg');
+=======
+INSERT INTO `mobil` (`id_mobil`, `id_subjenis`, `merk_mobil`, `warna`, `deskripsi`, `no_polisi`, `tahun_pembuatan`, `kuota_mobil`, `harga_sewa`, `created_at`, `gambar`) VALUES
+(5, 1, 'Avanza Veloz', 'putih', 'bdashxbkasbxywbhckasdghsabkchbsahbckhsabkhxba\r\nsadshabxhjabshvcashbxkhasbkhcvhkvash\r\nsascsahcbshabchbsajbcsabhxbkjasbxjk\r\nsacbhsabjbsah\r\nsahdbsakjjsabdbaskbdjksakjnxjasbhcbskjacjksancs\r\nsadsajbdjsabjkcbsjakncjknsajkbcjksabjc', 'N 2333 AG', 2015, 5, 2000000, '2019-03-28 16:17:52', 'avanza_veloz1.jpg'),
+(6, 5, 'Ferrari Gallardo', 'Hitam', 'sjdhsakjdhjashd\r\nsadjhsakdjsakjxnjasjkcbsjaknxsanjx\r\nsadjhsakjdhsjkahdkashjdas\r\nasdjhsakjdhksjahdjbsabckjnsakjcnjksajcnsjacjnsajbcsabj\r\nsadsadsjabdjsanjncsajkcjsabchjbsacbjsab\r\nascsajbdjsahjdsajcjsnajcskajhdjsakjdhkwjhdjaskjc\r\nsacjsbajkdjshajdkhasjbckjasnxuwnj', 'N 3444 UH', 2017, 2, 5000000, '2019-03-28 16:19:36', 'xenia1.jpg');
+>>>>>>> master
 
 -- --------------------------------------------------------
 
@@ -118,6 +132,35 @@ INSERT INTO `pelanggan` (`id_pelanggan`, `nama_pelanggan`, `alamat`, `email`, `n
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
+=======
+-- Struktur dari tabel `subjenis`
+--
+
+CREATE TABLE `subjenis` (
+  `id_subjenis` int(11) NOT NULL,
+  `id_jenis` int(11) NOT NULL,
+  `nama_subjenis` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `subjenis`
+--
+
+INSERT INTO `subjenis` (`id_subjenis`, `id_jenis`, `nama_subjenis`) VALUES
+(1, 1, 'Avanza'),
+(2, 1, 'Ayla'),
+(3, 2, 'Mercedes'),
+(4, 2, 'Mclaren'),
+(5, 3, 'Ferrari'),
+(6, 3, 'Pajero Sport'),
+(7, 4, 'Hino'),
+(8, 4, 'Espass');
+
+-- --------------------------------------------------------
+
+--
+>>>>>>> master
 -- Struktur dari tabel `transaction`
 --
 
@@ -137,9 +180,18 @@ CREATE TABLE `transaction` (
 --
 
 INSERT INTO `transaction` (`id_transaksi`, `id_pelanggan`, `id_mobil`, `tgl_sewa`, `lama_sewa`, `tgl_kembali`, `total_biaya`, `denda`) VALUES
+<<<<<<< HEAD
 (1, 1, 1, '2019-03-13 00:00:00', 2, '2019-03-15 00:00:00', 5000000, 0),
 (2, 1, 2, '2019-03-16 00:00:00', 5, '2019-03-21 00:00:00', 12500000, 0),
 (3, 1, 2, '2019-03-23 00:00:00', 3, '2019-03-26 00:00:00', 7500000, 0);
+=======
+(1, 1, 5, '2019-03-13 00:00:00', 2, '2019-03-15 00:00:00', 5000000, 0),
+(2, 1, 5, '2019-03-16 00:00:00', 5, '2019-03-21 00:00:00', 12500000, 0),
+(3, 1, 6, '2019-03-23 00:00:00', 3, '2019-03-26 00:00:00', 7500000, 0),
+(4, 1, 5, '2019-04-10 00:00:00', 4, NULL, 8000000, NULL),
+(5, 1, 6, '2019-04-08 00:00:00', 5, NULL, 25000000, NULL),
+(6, 1, 6, '2019-04-08 00:00:00', 5, NULL, 25000000, NULL);
+>>>>>>> master
 
 --
 -- Indexes for dumped tables
@@ -162,8 +214,12 @@ ALTER TABLE `jenis_mobil`
 --
 ALTER TABLE `mobil`
   ADD PRIMARY KEY (`id_mobil`),
+<<<<<<< HEAD
   ADD KEY `fkTableJenisMobil` (`id_jenis`),
   ADD KEY `id_jenis` (`id_jenis`);
+=======
+  ADD KEY `id_subjenis` (`id_subjenis`);
+>>>>>>> master
 
 --
 -- Indeks untuk tabel `pelanggan`
@@ -172,6 +228,16 @@ ALTER TABLE `pelanggan`
   ADD PRIMARY KEY (`id_pelanggan`);
 
 --
+<<<<<<< HEAD
+=======
+-- Indeks untuk tabel `subjenis`
+--
+ALTER TABLE `subjenis`
+  ADD PRIMARY KEY (`id_subjenis`),
+  ADD KEY `id_jenis` (`id_jenis`);
+
+--
+>>>>>>> master
 -- Indeks untuk tabel `transaction`
 --
 ALTER TABLE `transaction`
@@ -193,13 +259,21 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `jenis_mobil`
 --
 ALTER TABLE `jenis_mobil`
+<<<<<<< HEAD
   MODIFY `id_jenis` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+=======
+  MODIFY `id_jenis` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+>>>>>>> master
 
 --
 -- AUTO_INCREMENT untuk tabel `mobil`
 --
 ALTER TABLE `mobil`
+<<<<<<< HEAD
   MODIFY `id_mobil` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+=======
+  MODIFY `id_mobil` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+>>>>>>> master
 
 --
 -- AUTO_INCREMENT untuk tabel `pelanggan`
@@ -208,10 +282,23 @@ ALTER TABLE `pelanggan`
   MODIFY `id_pelanggan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT untuk tabel `transaction`
 --
 ALTER TABLE `transaction`
   MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+=======
+-- AUTO_INCREMENT untuk tabel `subjenis`
+--
+ALTER TABLE `subjenis`
+  MODIFY `id_subjenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT untuk tabel `transaction`
+--
+ALTER TABLE `transaction`
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+>>>>>>> master
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -221,7 +308,17 @@ ALTER TABLE `transaction`
 -- Ketidakleluasaan untuk tabel `mobil`
 --
 ALTER TABLE `mobil`
+<<<<<<< HEAD
   ADD CONSTRAINT `mobil_ibfk_1` FOREIGN KEY (`id_jenis`) REFERENCES `jenis_mobil` (`id_jenis`);
+=======
+  ADD CONSTRAINT `mobil_ibfk_1` FOREIGN KEY (`id_subjenis`) REFERENCES `subjenis` (`id_subjenis`);
+
+--
+-- Ketidakleluasaan untuk tabel `subjenis`
+--
+ALTER TABLE `subjenis`
+  ADD CONSTRAINT `subjenis_ibfk_1` FOREIGN KEY (`id_jenis`) REFERENCES `jenis_mobil` (`id_jenis`);
+>>>>>>> master
 
 --
 -- Ketidakleluasaan untuk tabel `transaction`

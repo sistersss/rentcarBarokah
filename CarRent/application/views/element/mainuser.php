@@ -26,6 +26,7 @@
     <?php $this->load->view('element/header'); ?>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
               
             </div>
@@ -226,11 +227,16 @@
       </div>
     </div>
 =======
+=======
+>>>>>>> master
     <?php 
       if(!empty($content)){
         echo $content;
       }
     ?>
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 
     <footer class="site-footer border-top">
