@@ -5,14 +5,16 @@ class Mobil_model extends CI_Model {
 	
 	public function getMobil()
 	{
-		$this->db->join('jenis_mobil','jenis_mobil.id_jenis=mobil.id_jenis');
+		$this->db->join('subjenis', 'subjenis.id_subjenis=mobil.id_subjenis');
+		$this->db->join('jenis_mobil','jenis_mobil.id_jenis=subjenis.id_jenis');
 		$query = $this->db->get('mobil');
 		return $query->result_array();
 	}
 
 	public function getMobilById($id)
 	{
-		$this->db->join('jenis_mobil','jenis_mobil.id_jenis=mobil.id_jenis');
+		$this->db->join('subjenis', 'subjenis.id_subjenis=mobil.id_subjenis');
+		$this->db->join('jenis_mobil','jenis_mobil.id_jenis=subjenis.id_jenis');
 		$this->db->where('id_mobil', $id);
 		$query = $this->db->get('mobil');
 		return $query->result_array();
@@ -20,7 +22,7 @@ class Mobil_model extends CI_Model {
 
 	public function addMobil($img)
 	{
-		$object = array('id_jenis' => $this->input->post('jenis'),
+		$object = array('id_subjenis' => $this->input->post('subjenis'),
 		                'merk_mobil' => $this->input->post('merk_mobil'),
 		                'warna' => $this->input->post('warna'),
 		                'deskripsi' => $this->input->post('deskripsi'),
@@ -35,7 +37,7 @@ class Mobil_model extends CI_Model {
 
 	public function editMobil($id,$img)
 	{
-		$object = array('id_jenis' => $this->input->post('jenis'),
+		$object = array('id_subjenis' => $this->input->post('subjenis'),
 		                'merk_mobil' => $this->input->post('merk_mobil'),
 		                'warna' => $this->input->post('warna'),
 		                'deskripsi' => $this->input->post('deskripsi'),
