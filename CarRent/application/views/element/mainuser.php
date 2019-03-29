@@ -55,7 +55,6 @@
   <script src="<?php echo base_url() ?>assets/user/js/aos.js"></script>
 
   <script src="<?php echo base_url() ?>assets/user/js/main.js"></script>
-	<h1>haha</h1>
     
   </body>
 </html>
