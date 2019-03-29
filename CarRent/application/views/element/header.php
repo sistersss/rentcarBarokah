@@ -23,12 +23,12 @@
       <nav class="site-navigation text-right text-md-left" role="navigation">
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="<?php echo base_url() ?>">Home</a></li>
             <li class="has-children">
               <a href="#">Kategori Mobil</a>
               <ul class="dropdown">
                 <?php foreach($kategori as $k) { ?>
-                <li><a href="#"><?php echo $k['nama_jenis'] ?></a></li>
+                <li><a href="<?php echo base_url() ?>index.php/HomeUser/listMobil/<?php echo $k['id_jenis'] ?>"><?php echo $k['nama_jenis'] ?></a></li>
                 <?php } ?>
               </ul>
             </li>
