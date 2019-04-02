@@ -8,8 +8,6 @@ class Kategori_model extends CI_Model {
 		$query = $this->db->get('jenis_mobil');
 		return $query->result_array();
 	}
-<<<<<<< HEAD
-=======
 
 	public function getDataSubkategoriMobil($id)
 	{
@@ -17,6 +15,5 @@ class Kategori_model extends CI_Model {
 		$query = $this->db->get('subjenis');
 		return $query->result_array();
 	}
->>>>>>> master
 }
 ?>

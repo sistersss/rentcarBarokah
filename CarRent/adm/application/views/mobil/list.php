@@ -25,21 +25,12 @@
                         </tr>
                       </thead>
                       <tbody>
-<<<<<<< HEAD
-                        <?php $no = 1;
-																							foreach ($mobil as $e) { ?>
-=======
                         <?php $no=1; foreach($mobil as $e) { ?>
->>>>>>> master
                         <tr>
                           <td><?php echo $no ?></td>
                           <td><?php echo $e['merk_mobil'] ?></td>
                           <td><?php echo $e['no_polisi']; ?></td>
-<<<<<<< HEAD
-                          <td><?php echo "Rp." . number_format($e['harga_sewa'], 0, "", "."); ?></td>
-=======
                           <td><?php echo $e['harga_sewa'] ?></td>
->>>>>>> master
                           <td><?php echo $e['kuota_mobil'] ?></td>
                           <td>
                             <center>
@@ -63,22 +54,12 @@
                             </div>
                           </div>
                         </div>
-<<<<<<< HEAD
-                        <?php $no++;
-																						} ?>
-=======
                         <?php $no++; } ?>
->>>>>>> master
                       </tbody>
                     </table>
                     <div class="clearfix" style="padding-bottom: 20px"></div>
 </div>
-<<<<<<< HEAD
-<?php $num = 1;
-foreach ($mobil as $m) { ?>
-=======
 <?php $num=1; foreach($mobil as $m) { ?>
->>>>>>> master
   <div class="modal fade bs-example-modal-lg" id="edit<?php echo $num; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                           <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="<?php echo base_url() ?>Mobil/editMobil/<?php echo $m['id_mobil'] ?>" method="POST" enctype="multipart/form-data">
                           <div class="modal-dialog modal-lg">
@@ -101,18 +82,6 @@ foreach ($mobil as $m) { ?>
                                   <div class="col-md-6 col-sm-6 col-xs-12">
                                     <select required="required" class="form-control col-md-7 col-xs-12" name="jenis" id="jenis">
                                       <option>--Pilih Jenis Mobil--</option>
-<<<<<<< HEAD
-                                      <?php foreach ($jenis as $j) { ?>
-                                        <?php if ($j['id_jenis'] == $m['id_jenis']) { ?>
-                                        <option value="<?php echo $j['id_jenis'] ?>" selected><?php echo $j['nama_jenis'] ?></option>
-                                        <?php 
-																																						} else { ?>
-                                        <option value="<?php echo $j['id_jenis'] ?>"><?php echo $j['nama_jenis'] ?></option>
-                                        <?php 
-																																						} ?>
-                                      <?php 
-																																				} ?>
-=======
                                       <?php foreach($jenis as $j) { ?>
                                         <?php if($j['id_jenis']==$m['id_jenis']) { ?>
                                         <option value="<?php echo $j['id_jenis'] ?>" selected><?php echo $j['nama_jenis'] ?></option>
@@ -120,7 +89,6 @@ foreach ($mobil as $m) { ?>
                                         <option value="<?php echo $j['id_jenis'] ?>"><?php echo $j['nama_jenis'] ?></option>
                                         <?php } ?>
                                       <?php } ?>
->>>>>>> master
                                     </select>
                                   </div>
                                 </div>
@@ -181,12 +149,7 @@ foreach ($mobil as $m) { ?>
                           </div>
                           </form>
                         </div>
-<<<<<<< HEAD
-<?php $num++;
-} ?>
-=======
 <?php $num++; } ?>
->>>>>>> master
 <div class="modal fade bs-example-modal-lg" id="add" tabindex="-1" role="dialog" aria-hidden="true">
   <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="<?php echo base_url() ?>Mobil/tambahMobil" method="POST" enctype="multipart/form-data">
   <div class="modal-dialog modal-lg">
@@ -209,12 +172,6 @@ foreach ($mobil as $m) { ?>
           <div class="col-md-6 col-sm-6 col-xs-12">
             <select required="required" class="form-control col-md-7 col-xs-12" name="jenis" id="jenis">
               <option>--Pilih Jenis Mobil--</option>
-<<<<<<< HEAD
-              <?php foreach ($jenis as $j) { ?>
-                <option value="<?php echo $j['id_jenis'] ?>"><?php echo $j['nama_jenis'] ?></option>
-              <?php 
-												} ?>
-=======
               <?php foreach($jenis as $j) { ?>
                 <option value="<?php echo $j['id_jenis'] ?>"><?php echo $j['nama_jenis'] ?></option>
               <?php } ?>
@@ -227,7 +184,6 @@ foreach ($mobil as $m) { ?>
           <div class="col-md-6 col-sm-6 col-xs-12">
             <select required="required" class="form-control col-md-7 col-xs-12" name="subjenis" id="subjenis">
               <option>--Pilih Subjenis Mobil--</option>
->>>>>>> master
             </select>
           </div>
         </div>
@@ -310,8 +266,6 @@ foreach ($mobil as $m) { ?>
             oTable.fnFilter($(this).val()).draw() ;
       });
     </script> 
-<<<<<<< HEAD
-=======
 <script type="text/javascript">
     $(document).ready(function() {
 
@@ -337,4 +291,3 @@ foreach ($mobil as $m) { ?>
         });
     });
 </script>
->>>>>>> master

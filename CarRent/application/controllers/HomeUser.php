@@ -38,8 +38,6 @@ class HomeUser extends CI_Controller {
 		$this->load->view('element/mainuser', $data);
 	}
 
-<<<<<<< HEAD
-=======
 	public function listMobil($id=null)
 	{
 		$data['title'] = 'List Mobil';
@@ -50,25 +48,16 @@ class HomeUser extends CI_Controller {
 		$this->load->view('element/mainuser', $data);
 	}
 
->>>>>>> master
 	public function pesanMobil($id)
 	{
 		if($this->session->userdata('id_pelanggan')){
 			$data['title'] = 'Pesan Mobil';
 			$data['kategori'] = $this->Kategori_model->getDataKategoriMobil();
-<<<<<<< HEAD
-			$data['pelanggan'] = $this->User_model->getDataPelangganById($id);
-=======
 			$data['pelanggan'] = $this->User_model->getDataPelangganById($this->session->userdata('id_pelanggan'));
->>>>>>> master
 			$data['content'] = $this->load->view('pesan',$data, TRUE);
 			$this->load->view('element/mainuser', $data);
 		}
 		else {
-<<<<<<< HEAD
-			redirect(base_url().'index.php/User');
-		}
-=======
 			$pesan = array('pesan'=>'active',
     					   'id_pesan'=>$id);
 			$this->session->set_userdata($pesan);
@@ -92,6 +81,5 @@ class HomeUser extends CI_Controller {
 		$this->session->unset_userdata('id_pesan');
 		$data['content'] = $this->load->view('cetak',$data, TRUE);
 		$this->load->view('element/mainuser', $data);
->>>>>>> master
 	}
 }
