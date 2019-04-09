@@ -25,6 +25,32 @@ class Dashboard extends CI_Controller {
 		$this->load->view('element/main', $data);
 	}
 
+	public function settingAdmin($id)
+	{
+		$data['title'] = 'Setting Admin';
+		$this->load->model('Admin_model');
+		if (isset($_POST['submit'])) {
+			if($this->input->post('password')==$this->input->post('retype')){
+				$this->Admin_model->editAdmin($id);
+				if($this->input->post('password') == ""){
+					redirect(base_url().'Dashboard/settingAdmin/'.$id);
+				}
+				else {
+					redirect(base_url());
+				}
+			}
+			else {
+				$this->session->set_flashdata('admin', 'Password anda tidak cocok');
+				redirect(base_url().'Dashboard/settingAdmin/'.$id);
+			}
+		}
+		else {
+			$data['admin'] = $this->Admin_model->getAdminById($id);
+			$data['content'] = $this->load->view('element/settingadmin',$data, TRUE);
+			$this->load->view('element/main', $data);
+		}
+	}
+
 	public function login()
 	{
 		$this->load->view('element/login');
@@ -48,6 +74,7 @@ class Dashboard extends CI_Controller {
     		}
     		else
     		{
+    			$this->session->set_flashdata('veriflogin', 'Username atau Password anda salah');
     			redirect(base_url());
     		}
 	    } else {

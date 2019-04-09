@@ -9,6 +9,13 @@ class Jenis_model extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function getSubjenis($id)
+	{
+		$this->db->where('id_jenis', $id);
+		$query = $this->db->get('subjenis');
+		return $query->result_array();
+	}
+
 	public function getJenisById($id)
 	{
 		$this->db->where('id_jenis', $id);
@@ -22,17 +29,24 @@ class Jenis_model extends CI_Model {
 		$this->db->insert("jenis_mobil", $object);
 	}
 
-	public function editJenis($id)
+	public function addSubjenis($id_jenis)
 	{
-		$object = array('nama_jenis' => $this->input->post('nama_jenis'));
-		$this->db->where('id_jenis', $id);
-		$this->db->update("jenis_mobil", $object);
+		$object = array('nama_subjenis' => $this->input->post('nama_subjenis'),
+						'id_jenis' => $id_jenis);
+		$this->db->insert("subjenis", $object);
 	}
 
-	public function deleteJenis($id)
+	public function editSubjenis($id)
 	{
-		$this->db->where('id_jenis', $id);
-		$this->db->delete("jenis_mobil");
+		$object = array('nama_subjenis' => $this->input->post('nama_subjenis'));
+		$this->db->where('id_subjenis', $id);
+		$this->db->update("subjenis", $object);
+	}
+
+	public function deleteSubjenis($id)
+	{
+		$this->db->where('id_subjenis', $id);
+		$this->db->delete("subjenis");
 	}
 
 }

@@ -11,6 +11,14 @@ class Mobil_model extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function getDataTransaksi($id)
+	{
+		$this->db->join('mobil', 'mobil.id_mobil=transaction.id_mobil');
+		$this->db->where('transaction.id_pelanggan', $id);
+		$query = $this->db->get('transaction');
+		return $query->result_array();
+	}
+
 	public function getDataMobilTerbaru()
 	{
 		$this->db->join('subjenis', 'subjenis.id_subjenis=mobil.id_subjenis');
