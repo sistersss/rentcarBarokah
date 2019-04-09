@@ -19,8 +19,10 @@ class Admin_model extends CI_Model {
 	public function editAdmin($id)
 	{
 		$object = array('nama_admin' => $this->input->post('nama_admin'),
-						'username' => $this->input->post('username'),
-						'password' => $this->input->post('password'));
+						'username' => $this->input->post('username'));
+		if($this->input->post('password') != ""){
+			$object['password'] = $this->input->post('password');
+		}
 		$this->db->where('id_admin', $id);
 		$this->db->update("admin", $object);
 	}

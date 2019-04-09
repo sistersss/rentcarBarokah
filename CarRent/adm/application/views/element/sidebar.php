@@ -6,8 +6,14 @@
                   <li><a href="<?php echo base_url() ?>Mobil"><i class="fa fa-home"></i> Daftar Mobil </a></li>
                   <li><a href="<?php echo base_url() ?>Pelanggan"><i class="fa fa-home"></i> Daftar Pelanggan </a></li>
                   <li><a href="<?php echo base_url() ?>Jenis"><i class="fa fa-home"></i> Daftar Jenis Mobil </a></li>
-                  <li><a href="<?php echo base_url() ?>Transaction"><i class="fa fa-home"></i> Daftar Transaksi </a></li>
-                  <li><a><i class="fa fa-home"></i> Setting Akun Admin </a></li>
+                  <li><a><i class="fa fa-home"></i> Daftar Transaksi </a>
+                    <ul class="nav child_menu">
+                      <li><a href="<?php echo base_url() ?>Transaction/penyewaan">Transaksi Penyewaan</a></li>
+                      <li><a href="<?php echo base_url() ?>Transaction/pengembalian">Transaksi Pengembalian</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="<?php echo base_url() ?>Transaction/kembalikanMobil"><i class="fa fa-home"></i> Pengembalian Mobil </a></li>
+                  <li><a href="<?php echo base_url() ?>Dashboard/settingAdmin/<?php echo $this->session->userdata('id_admin') ?>"><i class="fa fa-home"></i> Setting Akun Admin </a></li>
                 </ul>
               </div>
 

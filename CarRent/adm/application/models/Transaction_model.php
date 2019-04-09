@@ -3,6 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Transaction_model extends CI_Model {
 	
+	public function getTransactionById($id)
+	{
+		$this->db->where('id_transaksi', $id);
+		$query = $this->db->get('transaction');
+		return $query->result_array();
+	}
+
 	public function getSewa()
 	{
 		$this->db->join('pelanggan', 'pelanggan.id_pelanggan=transaction.id_pelanggan');
@@ -18,6 +25,16 @@ class Transaction_model extends CI_Model {
 		$this->db->join('pelanggan', 'pelanggan.id_pelanggan=transaction.id_pelanggan');
 		$this->db->join('mobil','mobil.id_mobil=transaction.id_mobil');
 		$this->db->where('tgl_kembali IS NOT NULL');
+		$query = $this->db->get('transaction');
+		return $query->result_array();
+	}
+
+	public function getPengembalian()
+	{
+		$this->db->join('pelanggan', 'pelanggan.id_pelanggan=transaction.id_pelanggan');
+		$this->db->join('mobil','mobil.id_mobil=transaction.id_mobil');
+		$this->db->where('tgl_kembali IS NULL');
+		$this->db->where('status', '1');
 		$query = $this->db->get('transaction');
 		return $query->result_array();
 	}
@@ -45,6 +62,14 @@ class Transaction_model extends CI_Model {
 		$this->db->update("transaction", $object);
 	}
 
+	public function kembaliMobil($id, $denda)
+	{
+		$object = array('tgl_kembali' => date('Y-m-d H:i:s'),
+		                'denda' => $denda);
+		$this->db->where('id_transaksi', $id);
+		$this->db->update("transaction", $object);
+	}
+
 	public function updateStatus($id)
 	{
 		$object = array('status' => '1');
@@ -52,7 +77,7 @@ class Transaction_model extends CI_Model {
 		$this->db->update("transaction", $object);
 	}
 
-	public function deleteSewa($id)
+	public function deleteTransaksi($id)
 	{
 		$this->db->where('id_transaksi', $id);
 		$this->db->delete("transaction");

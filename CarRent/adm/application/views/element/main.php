@@ -137,6 +137,8 @@
 
     <?php if($this->session->flashdata('adduserpass')){  ?>
         toastr.error("<?php echo $this->session->flashdata('adduserpass'); ?>");
+    <?php } else if($this->session->flashdata('admin')){ ?>
+        toastr.error("<?php echo $this->session->flashdata('admin'); ?>");
     <?php } ?>
 </script>
   </body>
