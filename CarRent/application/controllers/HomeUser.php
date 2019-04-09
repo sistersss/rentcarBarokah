@@ -38,6 +38,23 @@ class HomeUser extends CI_Controller {
 		$this->load->view('element/mainuser', $data);
 	}
 
+	public function historiTransaksi($id)
+	{
+		$data['title'] = 'Histori Transaksi';
+		$data['kategori'] = $this->Kategori_model->getDataKategoriMobil();
+		$data['histori'] = $this->Mobil_model->getDataTransaksi($id);
+		$data['content'] = $this->load->view('histori',$data, TRUE);
+		$this->load->view('element/mainuser', $data);
+	}
+
+	public function contactUs()
+	{
+		$data['title'] = 'Kontak';
+		$data['kategori'] = $this->Kategori_model->getDataKategoriMobil();
+		$data['content'] = $this->load->view('contact',$data, TRUE);
+		$this->load->view('element/mainuser', $data);
+	}
+
 	public function listMobil($id=null)
 	{
 		$data['title'] = 'List Mobil';
@@ -81,5 +98,52 @@ class HomeUser extends CI_Controller {
 		$this->session->unset_userdata('id_pesan');
 		$data['content'] = $this->load->view('cetak',$data, TRUE);
 		$this->load->view('element/mainuser', $data);
+	}
+
+	public function sendEmail()
+	{
+		ini_set("SMTP","smtp.gmail.com");
+
+		// $ToEmail = 'andhikaadjie23@gmail.com'; 
+	 //    $EmailSubject = $this->input->post('c_subject'); 
+	 //    $mailheader = "From: ".$this->input->post('c_email')."\r\n"; 
+	 //    $mailheader .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
+	 //    $MESSAGE_BODY = $this->input->post('c_message');
+	 //    mail($ToEmail, $EmailSubject, $MESSAGE_BODY, $mailheader) or die ("Failure"); 
+
+		$this->load->library('email');
+
+		       //SMTP & mail configuration
+				$config = array(
+					'protocol' => 'smtp',
+					'mailtype'=> 'text',
+					'crlf' => '\r\n',
+					'wordwrap'=>TRUE,
+					'newline'=>'\r\n',
+					'validate'=>FALSE,
+					'smtp_host' => 'smtp.gmail.com',
+					'smtp_port' => 587,
+					'smtp_user' => 'andhikaadjie23@gmail.com',
+					'smtp_pass' => '05November1996',
+					'charset' => 'utf-8'
+				);
+				$this->email->initialize($config);
+
+		       //Email content
+
+				$this->email->from('noreply@kuliahonline360.com', 'No-Reply KulOn');
+				$this->email->to('andhikaadjie23@gmail.com');				
+				$this->email->subject('Lupa Password');
+				// 		$message = "<p>This email has been sent as a request to reset our password</p>";
+		  //          	$message .= "<p><a href='admin.kuliahonline360.com/user/forget_password/".$check['code']."'>Click here </a>if you want to reset your password,
+		  //                      if not, then ignore</p>";
+				$message = 'asgdhsajd';
+				$this->email->message($message);
+				if ($this->email->send()) {
+					echo "SUKSES";
+				}
+				else {
+					echo "GAGAL";
+				}
 	}
 }
