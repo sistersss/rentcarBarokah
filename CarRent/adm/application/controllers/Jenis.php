@@ -21,6 +21,14 @@ class Jenis extends CI_Controller {
 		$this->load->view('element/main', $data);
 	}
 
+	public function subJenis($id)
+	{
+		$data['title'] = "Daftar Subjenis";
+		$data['subjenis'] = $this->Jenis_model->getSubjenis($id);
+		$data['content'] = $this->load->view('jenis/listsub',$data, TRUE);
+		$this->load->view('element/main', $data);
+	}
+
 	public function tambahJenis()
 	{
 		$this->Jenis_model->addJenis();
@@ -37,5 +45,23 @@ class Jenis extends CI_Controller {
 	{
 		$this->Jenis_model->deleteJenis($id);
 		redirect(base_url().'Jenis');
+	}
+
+	public function tambahSubjenis($id)
+	{
+		$this->Jenis_model->addSubjenis($id);
+		redirect(base_url().'Jenis/subJenis/'.$id);
+	}
+
+	public function editSubjenis($id, $id_jenis)
+	{
+		$this->Jenis_model->editSubjenis($id);
+		redirect(base_url().'Jenis/subJenis/'.$id_jenis);
+	}
+
+	public function hapusSubjenis($id, $id_jenis)
+	{
+		$this->Jenis_model->deleteSubjenis($id);
+		redirect(base_url().'Jenis/subJenis/'.$id_jenis);
 	}
 }

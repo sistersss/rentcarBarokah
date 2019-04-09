@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Mar 2019 pada 02.14
+-- Waktu pembuatan: 02 Apr 2019 pada 07.24
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.1
 
@@ -88,7 +88,7 @@ CREATE TABLE `mobil` (
 --
 
 INSERT INTO `mobil` (`id_mobil`, `id_subjenis`, `merk_mobil`, `warna`, `deskripsi`, `no_polisi`, `tahun_pembuatan`, `kuota_mobil`, `harga_sewa`, `created_at`, `gambar`) VALUES
-(5, 1, 'Avanza Veloz', 'putih', 'bdashxbkasbxywbhckasdghsabkchbsahbckhsabkhxba\r\nsadshabxhjabshvcashbxkhasbkhcvhkvash\r\nsascsahcbshabchbsajbcsabhxbkjasbxjk\r\nsacbhsabjbsah\r\nsahdbsakjjsabdbaskbdjksakjnxjasbhcbskjacjksancs\r\nsadsajbdjsabjkcbsjakncjknsajkbcjksabjc', 'N 2333 AG', 2015, 5, 2000000, '2019-03-28 16:17:52', 'avanza_veloz1.jpg'),
+(5, 1, 'Avanza Veloz', 'putih', 'bdashxbkasbxywbhckasdghsabkchbsahbckhsabkhxba\r\nsadshabxhjabshvcashbxkhasbkhcvhkvash\r\nsascsahcbshabchbsajbcsabhxbkjasbxjk\r\nsacbhsabjbsah\r\nsahdbsakjjsabdbaskbdjksakjnxjasbhcbskjacjksancs\r\nsadsajbdjsabjkcbsjakncjknsajkbcjksabjc', 'N 2333 AG', 2015, 4, 2000000, '2019-03-28 16:17:52', 'avanza_veloz1.jpg'),
 (6, 5, 'Ferrari Gallardo', 'Hitam', 'sjdhsakjdhjashd\r\nsadjhsakdjsakjxnjasjkcbsjaknxsanjx\r\nsadjhsakjdhsjkahdkashjdas\r\nasdjhsakjdhksjahdjbsabckjnsakjcnjksajcnsjacjnsajbcsabj\r\nsadsadsjabdjsanjncsajkcjsabchjbsacbjsab\r\nascsajbdjsahjdsajcjsnajcskajhdjsakjdhkwjhdjaskjc\r\nsacjsbajkdjshajdkhasjbckjasnxuwnj', 'N 3444 UH', 2017, 2, 5000000, '2019-03-28 16:19:36', 'xenia1.jpg');
 
 -- --------------------------------------------------------
@@ -154,20 +154,24 @@ CREATE TABLE `transaction` (
   `lama_sewa` int(11) NOT NULL,
   `tgl_kembali` datetime DEFAULT NULL,
   `total_biaya` int(11) NOT NULL,
-  `denda` int(11) DEFAULT NULL
+  `denda` int(11) DEFAULT NULL,
+  `status` int(11) NOT NULL COMMENT '0 : belum diambil, 1 : sudah diambil'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `transaction`
 --
 
-INSERT INTO `transaction` (`id_transaksi`, `id_pelanggan`, `id_mobil`, `tgl_sewa`, `lama_sewa`, `tgl_kembali`, `total_biaya`, `denda`) VALUES
-(1, 1, 5, '2019-03-13 00:00:00', 2, '2019-03-15 00:00:00', 5000000, 0),
-(2, 1, 5, '2019-03-16 00:00:00', 5, '2019-03-21 00:00:00', 12500000, 0),
-(3, 1, 6, '2019-03-23 00:00:00', 3, '2019-03-26 00:00:00', 7500000, 0),
-(4, 1, 5, '2019-04-10 00:00:00', 4, NULL, 8000000, NULL),
-(5, 1, 6, '2019-04-08 00:00:00', 5, NULL, 25000000, NULL),
-(6, 1, 6, '2019-04-08 00:00:00', 5, NULL, 25000000, NULL);
+INSERT INTO `transaction` (`id_transaksi`, `id_pelanggan`, `id_mobil`, `tgl_sewa`, `lama_sewa`, `tgl_kembali`, `total_biaya`, `denda`, `status`) VALUES
+(1, 1, 5, '2019-03-13 00:00:00', 2, '2019-03-15 00:00:00', 5000000, 0, 1),
+(2, 1, 5, '2019-03-16 00:00:00', 5, '2019-03-21 00:00:00', 12500000, 0, 1),
+(3, 1, 6, '2019-03-23 00:00:00', 3, '2019-03-26 00:00:00', 7500000, 0, 1),
+(4, 1, 5, '2019-04-10 00:00:00', 4, NULL, 8000000, NULL, 1),
+(5, 1, 6, '2019-04-08 00:00:00', 5, NULL, 25000000, NULL, 0),
+(6, 1, 6, '2019-04-08 00:00:00', 5, NULL, 25000000, NULL, 0),
+(7, 1, 5, '2019-04-01 00:00:00', 5, NULL, 10000000, NULL, 0),
+(8, 1, 5, '2019-04-09 00:00:00', 5, NULL, 10000000, NULL, 0),
+(9, 1, 5, '2019-04-03 00:00:00', 2, NULL, 4000000, NULL, 0);
 
 --
 -- Indexes for dumped tables
@@ -239,19 +243,19 @@ ALTER TABLE `mobil`
 -- AUTO_INCREMENT untuk tabel `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pelanggan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `subjenis`
 --
 ALTER TABLE `subjenis`
-  MODIFY `id_subjenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_subjenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

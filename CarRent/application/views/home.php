@@ -1,4 +1,4 @@
-<div class="site-blocks-cover" style="background-image: url(<?php echo base_url() ?>assets/user/images/hero_1.jpg);" data-aos="fade">
+<div class="site-blocks-cover" style="background-image: url(<?php echo base_url() ?>assets/user/images/Mobil0.jpg);" data-aos="fade">
       <div class="container">
         <div class="row align-items-start align-items-md-center justify-content-end">
           
@@ -66,4 +66,3 @@
           </div>
         </div>
       </div>
-    </div>
