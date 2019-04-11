@@ -20,6 +20,12 @@ class Transaction_model extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function getKeterangan()
+	{
+		$query = $this->db->get('keterangan');
+		return $query->result_array();
+	}
+
 	public function getKembali()
 	{
 		$this->db->join('pelanggan', 'pelanggan.id_pelanggan=transaction.id_pelanggan');
@@ -60,6 +66,12 @@ class Transaction_model extends CI_Model {
 		            	'status' => '0');
 		$this->db->where('id_transaksi', $id);
 		$this->db->update("transaction", $object);
+	}
+
+	public function updateKeterangan()
+	{
+		$object = array('keterangan' => $this->input->post('keterangan'));
+		$this->db->update("keterangan", $object);
 	}
 
 	public function kembaliMobil($id, $denda)

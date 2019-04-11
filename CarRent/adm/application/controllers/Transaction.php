@@ -14,6 +14,16 @@ class Transaction extends CI_Controller {
 		$this->load->helper('url', 'form');
 		$this->load->library('form_validation');
 
+		$this->load->library('ckeditor');
+
+		$this->ckeditor->basePath = base_url().'assets/ckeditor/';
+		// $this->ckeditor->config['toolbar'] = array(
+  //               array('Bold','Italic','Underline','Strike','Subscript','Superscript')
+                                                    // );
+		$this->ckeditor->config['language'] = 'en';
+		$this->ckeditor->config['width'] = '730px';
+		$this->ckeditor->config['height'] = '300px';
+
 	}
 
 	public function penyewaan()
@@ -24,6 +34,20 @@ class Transaction extends CI_Controller {
 		$data['pelanggan'] = $this->Pelanggan_model->getPelanggan();
 		$data['content'] = $this->load->view('transaction/listsewa',$data, TRUE);
 		$this->load->view('element/main', $data);
+	}
+
+	public function settingKeterangan()
+	{
+		$data['title'] = 'Setting Keterangan';
+		if (isset($_POST['submit'])) {
+			$this->Transaction_model->updateKeterangan();
+			redirect(base_url().'Transaction/settingKeterangan');
+		}
+		else {
+			$data['keterangan'] = $this->Transaction_model->getKeterangan();
+			$data['content'] = $this->load->view('element/settingketerangan',$data, TRUE);
+			$this->load->view('element/main', $data);
+		}
 	}
 
 	public function pengembalian()
