@@ -70,6 +70,7 @@ class HomeUser extends CI_Controller {
 		if($this->session->userdata('id_pelanggan')){
 			$data['title'] = 'Pesan Mobil';
 			$data['kategori'] = $this->Kategori_model->getDataKategoriMobil();
+			$data['keterangan'] = $this->User_model->getKeterangan();
 			$data['pelanggan'] = $this->User_model->getDataPelangganById($this->session->userdata('id_pelanggan'));
 			$data['content'] = $this->load->view('pesan',$data, TRUE);
 			$this->load->view('element/mainuser', $data);

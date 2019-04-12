@@ -34,6 +34,7 @@
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url() ?>assets/build/css/custom.min.css" rel="stylesheet">
+    <script type="text/javascript" src="<?php echo base_url() ?>assets/ckeditor/ckeditor.js"></script>
   </head>
 
   <body class="nav-md" style="background: #202322">
@@ -137,6 +138,8 @@
 
     <?php if($this->session->flashdata('adduserpass')){  ?>
         toastr.error("<?php echo $this->session->flashdata('adduserpass'); ?>");
+    <?php } else if($this->session->flashdata('admin')){ ?>
+        toastr.error("<?php echo $this->session->flashdata('admin'); ?>");
     <?php } ?>
 </script>
   </body>

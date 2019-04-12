@@ -37,13 +37,20 @@
                 <div class="form-group row">
                   <div class="col-md-12">
                     <label for="tgl_pinjam" class="text-black">Tanggal Peminjaman </label>
-                    <input type="date" class="form-control" id="tgl_pinjam" name="tgl_pinjam">
+                    <input type="date" class="form-control" required="" id="tgl_pinjam" name="tgl_pinjam">
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-md-12">
                     <label for="lama_pinjam" class="text-black">Lama Peminjaman </label>
-                    <input type="number" class="form-control" id="lama_pinjam" name="lama_pinjam">
+                    <div class="row">
+                    <div class="col-md-2">
+                      <input type="number" class="form-control" required="" id="lama_pinjam" name="lama_pinjam">
+                    </div>
+                    <div class="col-md-1">
+                      <h3>hari</h3>
+                    </div>
+                    </div>
                   </div>
                 </div>
 
@@ -54,6 +61,10 @@
                   <div class="col-lg-6">
                     <input type="submit" class="btn btn-primary btn-lg btn-block" value="Pesan">
                   </div>
+                </div>
+
+                <div class="form-group row">
+                  <?php echo $keterangan[0]['keterangan'] ?>
                 </div>
               </div>
             </form>
