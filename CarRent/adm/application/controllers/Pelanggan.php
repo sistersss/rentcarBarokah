@@ -8,6 +8,7 @@ class Pelanggan extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('Pelanggan_model');
+		$this->load->model('Admin_model');
 		$this->load->helper('url', 'form');
 		$this->load->library('form_validation');
 
@@ -17,6 +18,7 @@ class Pelanggan extends CI_Controller {
 	{
 		$data['title'] = "Daftar Pelanggan";
 		$data['pelanggan'] = $this->Pelanggan_model->getPelanggan();
+		$data['notif'] = $this->Admin_model->getNotifikasi();
 		$data['content'] = $this->load->view('pelanggan/list',$data, TRUE);
 		$this->load->view('element/main', $data);
 	}

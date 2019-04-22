@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Apr 2019 pada 16.23
+-- Waktu pembuatan: 16 Apr 2019 pada 08.54
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.1
 
@@ -78,7 +78,7 @@ CREATE TABLE `keterangan` (
 --
 
 INSERT INTO `keterangan` (`keterangan`) VALUES
-('<ul>\r\n	<li>Membawa Bukti Transaksi</li>\r\n	<li>Membawa KTP Asli</li>\r\n	<li>Membawa Fotokopi KK</li>\r\n	<li>Membawa Foto 4x6 (2 lembar)</li>\r\n</ul>\r\n');
+('<table border=\"0\" cellpadding=\"1\" cellspacing=\"1\" style=\"width:100%\">\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<ul>\r\n				<li>Membawa Bukti Transaksi</li>\r\n			</ul>\r\n			</td>\r\n			<td>\r\n			<ul>\r\n				<li>Membawa KTP Asli</li>\r\n			</ul>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<ul>\r\n				<li>Membawa Fotokopi KK</li>\r\n			</ul>\r\n			</td>\r\n			<td>\r\n			<ul>\r\n				<li>Membawa Foto 4x6 (2 lembar)</li>\r\n			</ul>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n');
 
 -- --------------------------------------------------------
 
@@ -107,6 +107,25 @@ CREATE TABLE `mobil` (
 INSERT INTO `mobil` (`id_mobil`, `id_subjenis`, `merk_mobil`, `warna`, `deskripsi`, `no_polisi`, `tahun_pembuatan`, `kuota_mobil`, `harga_sewa`, `created_at`, `gambar`) VALUES
 (5, 1, 'Avanza Veloz', 'putih', 'bdashxbkasbxywbhckasdghsabkchbsahbckhsabkhxba\r\nsadshabxhjabshvcashbxkhasbkhcvhkvash\r\nsascsahcbshabchbsajbcsabhxbkjasbxjk\r\nsacbhsabjbsah\r\nsahdbsakjjsabdbaskbdjksakjnxjasbhcbskjacjksancs\r\nsadsajbdjsabjkcbsjakncjknsajkbcjksabjc', 'N 2333 AG', 2015, 7, 2000000, '2019-03-28 16:17:52', 'avanza_veloz1.jpg'),
 (6, 5, 'Ferrari Gallardo', 'Hitam', 'sjdhsakjdhjashd\r\nsadjhsakdjsakjxnjasjkcbsjaknxsanjx\r\nsadjhsakjdhsjkahdkashjdas\r\nasdjhsakjdhksjahdjbsabckjnsakjcnjksajcnsjacjnsajbcsabj\r\nsadsadsjabdjsanjncsajkcjsabchjbsacbjsab\r\nascsajbdjsahjdsajcjsnajcskajhdjsakjdhkwjhdjaskjc\r\nsacjsbajkdjshajdkhasjbckjasnxuwnj', 'N 3444 UH', 2017, 2, 5000000, '2019-03-28 16:19:36', 'xenia1.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `notifikasi`
+--
+
+CREATE TABLE `notifikasi` (
+  `id_notif` int(11) NOT NULL,
+  `id_transaksi` int(11) NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `notifikasi`
+--
+
+INSERT INTO `notifikasi` (`id_notif`, `id_transaksi`, `created_at`) VALUES
+(1, 25, '2019-04-15 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -172,7 +191,7 @@ CREATE TABLE `transaction` (
   `tgl_kembali` datetime DEFAULT NULL,
   `total_biaya` int(11) NOT NULL,
   `denda` int(11) DEFAULT NULL,
-  `status` int(11) NOT NULL COMMENT '0 : belum diambil, 1 : sudah diambil'
+  `status` int(11) NOT NULL COMMENT '0 : belum diambil, 1 : sudah diambil, 2 : expired'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -189,7 +208,56 @@ INSERT INTO `transaction` (`id_transaksi`, `id_pelanggan`, `id_mobil`, `tgl_sewa
 (7, 1, 5, '2019-04-01 00:00:00', 5, NULL, 10000000, NULL, 0),
 (8, 1, 5, '2019-04-09 00:00:00', 5, NULL, 10000000, NULL, 0),
 (9, 1, 5, '2019-04-03 00:00:00', 2, NULL, 4000000, NULL, 0),
-(10, 1, 5, '2019-04-01 00:00:00', 5, '2019-04-08 16:00:18', 10000000, 200000, 1);
+(10, 1, 5, '2019-04-01 00:00:00', 5, '2019-04-08 16:00:18', 10000000, 200000, 1),
+(11, 1, 5, '2019-04-15 00:00:00', 5, NULL, 10000000, NULL, 0),
+(12, 1, 5, '2019-04-15 00:00:00', 5, NULL, 10000000, NULL, 0),
+(13, 1, 5, '2019-04-15 00:00:00', 5, NULL, 10000000, NULL, 0),
+(14, 1, 5, '2019-04-15 00:00:00', 5, NULL, 10000000, NULL, 0),
+(15, 1, 5, '2019-04-15 00:00:00', 5, NULL, 10000000, NULL, 0),
+(16, 1, 5, '2019-04-15 00:00:00', 5, NULL, 10000000, NULL, 0),
+(17, 1, 5, '2019-04-15 00:00:00', 5, NULL, 10000000, NULL, 0),
+(18, 1, 5, '2019-04-15 00:00:00', 5, NULL, 10000000, NULL, 0),
+(19, 1, 5, '2019-04-15 00:00:00', 5, NULL, 10000000, NULL, 0),
+(20, 1, 5, '2019-04-15 00:00:00', 5, NULL, 10000000, NULL, 0),
+(21, 1, 5, '2019-04-15 00:00:00', 5, NULL, 10000000, NULL, 0),
+(22, 1, 5, '2019-04-15 00:00:00', 5, NULL, 10000000, NULL, 0),
+(23, 1, 5, '2019-04-15 00:00:00', 5, NULL, 10000000, NULL, 0),
+(24, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(25, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 2),
+(26, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(27, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(28, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(29, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(30, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(31, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(32, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(33, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(34, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(35, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(36, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(37, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(38, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(39, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(40, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(41, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(42, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(43, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(44, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(45, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(46, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(47, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(48, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(49, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(50, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(51, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(52, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(53, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(54, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(55, 1, 5, '2019-04-15 00:00:00', 12, NULL, 24000000, NULL, 0),
+(56, 1, 5, '2019-04-15 00:00:00', 2, NULL, 4000000, NULL, 0),
+(57, 1, 5, '2019-04-15 00:00:00', 2, NULL, 4000000, NULL, 0),
+(58, 1, 5, '2019-04-15 00:00:00', 2, NULL, 4000000, NULL, 0),
+(59, 1, 6, '2019-04-15 00:00:00', 2, NULL, 10000000, NULL, 0);
 
 --
 -- Indexes for dumped tables
@@ -213,6 +281,13 @@ ALTER TABLE `jenis_mobil`
 ALTER TABLE `mobil`
   ADD PRIMARY KEY (`id_mobil`),
   ADD KEY `id_subjenis` (`id_subjenis`);
+
+--
+-- Indeks untuk tabel `notifikasi`
+--
+ALTER TABLE `notifikasi`
+  ADD PRIMARY KEY (`id_notif`),
+  ADD KEY `id_transaksi` (`id_transaksi`);
 
 --
 -- Indeks untuk tabel `pelanggan`
@@ -258,6 +333,12 @@ ALTER TABLE `mobil`
   MODIFY `id_mobil` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT untuk tabel `notifikasi`
+--
+ALTER TABLE `notifikasi`
+  MODIFY `id_notif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT untuk tabel `pelanggan`
 --
 ALTER TABLE `pelanggan`
@@ -273,7 +354,7 @@ ALTER TABLE `subjenis`
 -- AUTO_INCREMENT untuk tabel `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -284,6 +365,12 @@ ALTER TABLE `transaction`
 --
 ALTER TABLE `mobil`
   ADD CONSTRAINT `mobil_ibfk_1` FOREIGN KEY (`id_subjenis`) REFERENCES `subjenis` (`id_subjenis`);
+
+--
+-- Ketidakleluasaan untuk tabel `notifikasi`
+--
+ALTER TABLE `notifikasi`
+  ADD CONSTRAINT `notifikasi_ibfk_1` FOREIGN KEY (`id_transaksi`) REFERENCES `transaction` (`id_transaksi`);
 
 --
 -- Ketidakleluasaan untuk tabel `subjenis`

@@ -11,6 +11,7 @@ class Transaction extends CI_Controller {
 		$this->load->model('Pelanggan_model');
 		$this->load->model('Mobil_model');
 		$this->load->model('Jenis_model');
+		$this->load->model('Admin_model');
 		$this->load->helper('url', 'form');
 		$this->load->library('form_validation');
 
@@ -32,8 +33,28 @@ class Transaction extends CI_Controller {
 		$data['sewa'] = $this->Transaction_model->getSewa();
 		$data['jenis'] = $this->Jenis_model->getJenis();
 		$data['pelanggan'] = $this->Pelanggan_model->getPelanggan();
+		$data['notif'] = $this->Admin_model->getNotifikasi();
 		$data['content'] = $this->load->view('transaction/listsewa',$data, TRUE);
 		$this->load->view('element/main', $data);
+	}
+
+	public function checkTransaction()
+	{
+		$tran = $this->Transaction_model->getTransaction();
+		foreach ($tran as $t) {
+			$awal  = new DateTime($tran['tgl_sewa']);
+			$akhir = new DateTime(date('Y-m-d H:i:s')); // Waktu sekarang
+			$diff  = $awal->diff($akhir);
+	   		$telat = $diff->d;
+
+	   		if($telat > 1){
+	   			$this->Transaction_model->expiredTransaction($t['id_transaksi']);
+	   			$this->Transaction_model->notifExpired($t['id_transaksi']);
+	   		}
+	   		else{
+
+	   		}
+		}
 	}
 
 	public function settingKeterangan()
@@ -45,6 +66,7 @@ class Transaction extends CI_Controller {
 		}
 		else {
 			$data['keterangan'] = $this->Transaction_model->getKeterangan();
+			$data['notif'] = $this->Admin_model->getNotifikasi();
 			$data['content'] = $this->load->view('element/settingketerangan',$data, TRUE);
 			$this->load->view('element/main', $data);
 		}
@@ -54,6 +76,7 @@ class Transaction extends CI_Controller {
 	{
 		$data['title'] = "Daftar Transaction";
 		$data['kembali'] = $this->Transaction_model->getKembali();
+		$data['notif'] = $this->Admin_model->getNotifikasi();
 		$data['content'] = $this->load->view('transaction/listkembali',$data, TRUE);
 		$this->load->view('element/main', $data);
 	}
@@ -62,6 +85,7 @@ class Transaction extends CI_Controller {
 	{
 		$data['title'] = "Daftar Transaction";
 		$data['pengembalian'] = $this->Transaction_model->getPengembalian();
+		$data['notif'] = $this->Admin_model->getNotifikasi();
 		$data['content'] = $this->load->view('transaction/listpengembalian',$data, TRUE);
 		$this->load->view('element/main', $data);
 	}

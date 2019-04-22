@@ -49,6 +49,18 @@ class Mobil_model extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function getDataTransaksiMobil()
+	{
+		$this->db->join('pelanggan', 'pelanggan.id_pelanggan=transaction.id_pelanggan');
+		$this->db->join('mobil', 'mobil.id_mobil=transaction.id_mobil');
+		$this->db->join('subjenis','subjenis.id_subjenis=mobil.id_subjenis');
+		$this->db->join('jenis_mobil','jenis_mobil.id_jenis=subjenis.id_jenis');
+		$this->db->order_by('transaction.id_transaksi', 'DESC');
+		$this->db->limit(1);
+		$query = $this->db->get('transaction');
+		return $query->result_array();
+	}
+
 	public function addTransaction($id_mobil, $id_user, $total_bayar)
 	{
 		$object = array('id_pelanggan' => $id_user,
