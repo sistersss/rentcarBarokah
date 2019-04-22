@@ -10,6 +10,13 @@ class Transaction_model extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function getTransaction()
+	{
+		$this->db->where('status', '0');
+		$query = $this->db->get('transaction');
+		return $query->result_array();
+	}
+
 	public function getSewa()
 	{
 		$this->db->join('pelanggan', 'pelanggan.id_pelanggan=transaction.id_pelanggan');
@@ -80,6 +87,20 @@ class Transaction_model extends CI_Model {
 		                'denda' => $denda);
 		$this->db->where('id_transaksi', $id);
 		$this->db->update("transaction", $object);
+	}
+
+	public function expiredTransaction($id)
+	{
+		$object = array('status' => '2');
+		$this->db->where('id_transaksi', $id);
+		$this->db->update("transaction", $object);
+	}
+
+	public function notifExpired($id)
+	{
+		$object = array('id_transaksi' => $id,
+		                'created_at' => date('Y-m-d H:i:s'));
+		$this->db->insert("notifikasi", $object);
 	}
 
 	public function updateStatus($id)

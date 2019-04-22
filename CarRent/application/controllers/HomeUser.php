@@ -87,18 +87,26 @@ class HomeUser extends CI_Controller {
 	{
 		$id_user = $this->session->userdata('id_pelanggan');
 		$mobil = $this->Mobil_model->getDataMobilById($id_mobil);
-		$total_bayar = $mobil[0]['harga_sewa']*$this->input->post('lama_pinjam');
-		$this->Mobil_model->addTransaction($id_mobil, $id_user, $total_bayar);
+		if($mobil[0]['kuota_mobil']>=1) {
+			$total_bayar = $mobil[0]['harga_sewa']*$this->input->post('lama_pinjam');
+			$this->Mobil_model->addTransaction($id_mobil, $id_user, $total_bayar);
 
-		$data['mobil'] = $mobil;
-		$data['tgl_pinjam'] = $this->input->post('tgl_pinjam');
-		$data['lama_pinjam'] = $this->input->post('lama_pinjam');
-		$data['total_bayar'] = $total_bayar;
-		$data['kategori'] = $this->Kategori_model->getDataKategoriMobil();
-		$this->session->unset_userdata('pesan');
-		$this->session->unset_userdata('id_pesan');
-		$data['content'] = $this->load->view('cetak',$data, TRUE);
-		$this->load->view('element/mainuser', $data);
+			$data['mobil'] = $mobil;
+			$data['tgl_pinjam'] = $this->input->post('tgl_pinjam');
+			$data['lama_pinjam'] = $this->input->post('lama_pinjam');
+			$data['total_bayar'] = $total_bayar;
+			$data['kategori'] = $this->Kategori_model->getDataKategoriMobil();
+			$data['transaksi'] = $this->Mobil_model->getDataTransaksiMobil();
+			$data['keterangan'] = $this->User_model->getKeterangan();
+			$this->session->unset_userdata('pesan');
+			$this->session->unset_userdata('id_pesan');
+			$data['content'] = $this->load->view('cetak',$data, TRUE);
+			$this->load->view('element/mainuser', $data);
+		}
+		else {
+			$this->session->set_flashdata('kuota', 'Kuota Mobil Sudah Habis');
+			redirect(base_url());
+		}
 	}
 
 	public function sendEmail()
@@ -114,37 +122,45 @@ class HomeUser extends CI_Controller {
 
 		$this->load->library('email');
 
-		       //SMTP & mail configuration
-				$config = array(
-					'protocol' => 'smtp',
-					'mailtype'=> 'text',
-					'crlf' => '\r\n',
-					'wordwrap'=>TRUE,
-					'newline'=>'\r\n',
-					'validate'=>FALSE,
-					'smtp_host' => 'smtp.gmail.com',
-					'smtp_port' => 587,
-					'smtp_user' => 'andhikaadjie23@gmail.com',
-					'smtp_pass' => '05November1996',
-					'charset' => 'utf-8'
-				);
-				$this->email->initialize($config);
-
-		       //Email content
-
-				$this->email->from('noreply@kuliahonline360.com', 'No-Reply KulOn');
-				$this->email->to('andhikaadjie23@gmail.com');				
-				$this->email->subject('Lupa Password');
-				// 		$message = "<p>This email has been sent as a request to reset our password</p>";
-		  //          	$message .= "<p><a href='admin.kuliahonline360.com/user/forget_password/".$check['code']."'>Click here </a>if you want to reset your password,
-		  //                      if not, then ignore</p>";
-				$message = 'asgdhsajd';
-				$this->email->message($message);
-				if ($this->email->send()) {
-					echo "SUKSES";
-				}
-				else {
-					echo "GAGAL";
-				}
+		       $config = [
+               'useragent' => 'CodeIgniter',
+               'protocol'  => 'smtp',
+               'mailpath'  => '/usr/sbin/sendmail',
+               'smtp_host' => 'ssl://smtp.gmail.com',
+               'smtp_user' => 'andhikaadjie23@gmail.com',   // Ganti dengan email gmail Anda.
+               'smtp_pass' => '05November1996',             // Password gmail Anda.
+               'smtp_port' => 465,
+               'smtp_keepalive' => TRUE,
+               'smtp_crypto' => 'SSL',
+               'wordwrap'  => TRUE,
+               'wrapchars' => 80,
+               'mailtype'  => 'html',
+               'charset'   => 'utf-8',
+               'validate'  => TRUE,
+               'crlf'      => "\r\n",
+               'newline'   => "\r\n",
+           ];
+ 
+        // Load library email dan konfigurasinya.
+        $this->load->library('email', $config);
+ 
+        // Pengirim dan penerima email.
+        $this->email->from($this->input->post('c_email'));    // Email dan nama pegirim.
+        $this->email->to('andhikaadjie23@gmail.com');                       // Penerima email.
+ 
+        // Lampiran email. Isi dengan url/path file.
+        // $this->email->attach('https://masrud.com/themes/masrud/img/logo.png');
+ 
+        // Subject email.
+        $this->email->subject($this->input->post('c_subject'));
+ 
+        // Isi email. Bisa dengan format html.
+        $this->email->message($this->input->post('c_message'));
+		if ($this->email->send()) {
+			echo "SUKSES";
+		}
+		else {
+			echo "GAGAL";
+		}
 	}
 }

@@ -9,6 +9,16 @@ class Admin_model extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function getNotifikasi()
+	{
+		$this->db->select('pelanggan.nama_pelanggan, COUNT(notifikasi.id_notif) as jml');
+		$this->db->join('transaction','transaction.id_transaksi=notifikasi.id_transaksi');
+		$this->db->join('pelanggan','pelanggan.id_pelanggan=transaction.id_pelanggan');
+		$this->db->order_by('notifikasi.created_at', 'DESC');
+		$query = $this->db->get('notifikasi');
+		return $query->result_array();
+	}
+
 	public function getAdminById($id)
 	{
 		$this->db->where('id_admin', $id);

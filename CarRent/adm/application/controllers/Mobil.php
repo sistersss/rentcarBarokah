@@ -9,6 +9,7 @@ class Mobil extends CI_Controller {
 
 		$this->load->model('Mobil_model');
 		$this->load->model('Jenis_model');
+		$this->load->model('Admin_model');
 		$this->load->helper('url', 'form');
 		$this->load->library('form_validation');
 
@@ -19,6 +20,7 @@ class Mobil extends CI_Controller {
 		$data['title'] = "Daftar Mobil";
 		$data['mobil'] = $this->Mobil_model->getMobil();
 		$data['jenis'] = $this->Jenis_model->getJenis();
+		$data['notif'] = $this->Admin_model->getNotifikasi();
 		$data['content'] = $this->load->view('mobil/list',$data, TRUE);
 		$this->load->view('element/main', $data);
 	}
@@ -49,9 +51,16 @@ class Mobil extends CI_Controller {
 
 	public function tambahMobil()
 	{
-		$img = $this->upImg();
-		$this->Mobil_model->addMobil($img);
-		redirect(base_url().'Mobil');
+		$check = $this->Mobil_model->checkMobil($this->input->post('no_polisi'));
+		if($check<1){
+			$img = $this->upImg();
+			$this->Mobil_model->addMobil($img);
+			redirect(base_url().'Mobil');
+		}
+		else {
+			$this->session->set_flashdata('nopol', 'Nomor Polisi Sudah Ada');
+			redirect(base_url().'Mobil');
+		}
 	}
 
 	public function editMobil($id)
