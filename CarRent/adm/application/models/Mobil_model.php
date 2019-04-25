@@ -11,6 +11,13 @@ class Mobil_model extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function checkMobil($no_pol)
+	{
+		$this->db->where('no_polisi', $no_pol);
+		$query = $this->db->get('mobil');
+		return $query->num_rows();
+	}
+
 	public function getMobilById($id)
 	{
 		$this->db->join('subjenis', 'subjenis.id_subjenis=mobil.id_subjenis');
