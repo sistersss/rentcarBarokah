@@ -49,7 +49,8 @@ class User extends CI_Controller {
     		}
     		else
     		{
-    			redirect(base_url());
+				$this->session->set_flashdata('ceklogin', 'Username atau Password Salah');
+    			redirect(base_url().'index.php/User');
     		}
 	    } else {
 			redirect(base_url());
@@ -69,7 +70,7 @@ class User extends CI_Controller {
     
     	if ($retype == $password) {
     		$this->User_model->addPelanggan();
-    		redirect(base_url());
+    		redirect(base_url().'index.php/User');
     	}
     	else
     	{

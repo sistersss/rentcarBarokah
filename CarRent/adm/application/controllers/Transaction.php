@@ -42,14 +42,14 @@ class Transaction extends CI_Controller {
 	{
 		$tran = $this->Transaction_model->getTransaction();
 		foreach ($tran as $t) {
-			$awal  = new DateTime($tran['tgl_sewa']);
+			$awal  = new DateTime($t['tgl_sewa']); // waktu sewa(tanggal diambil)
 			$akhir = new DateTime(date('Y-m-d H:i:s')); // Waktu sekarang
-			$diff  = $awal->diff($akhir);
-	   		$telat = $diff->d;
+			$diff  = $awal->diff($akhir); // hitung selisih hari
+	   		$telat = $diff->d; // ngambil selisih hari
 
-	   		if($telat > 1){
-	   			$this->Transaction_model->expiredTransaction($t['id_transaksi']);
-	   			$this->Transaction_model->notifExpired($t['id_transaksi']);
+	   		if($telat > 1){ // cek selisih hari kalo lebih dari 1
+	   			$this->Transaction_model->expiredTransaction($t['id_transaksi']); // ubah status transaksi jadi 2:expired
+	   			$this->Transaction_model->notifExpired($t['id_transaksi']); // buat notif transaksi expired
 	   		}
 	   		else{
 
@@ -114,7 +114,7 @@ class Transaction extends CI_Controller {
    	public function ambilMobil($id, $id_mobil)
    	{
    		$this->Transaction_model->updateStatus($id);
-   		$this->db->query("UPDATE mobil SET kuota_mobil=(kuota_mobil-1) WHERE id_mobil=".$id_mobil);
+   		// $this->db->query("UPDATE mobil SET kuota_mobil=(kuota_mobil-1) WHERE id_mobil=".$id_mobil);
    		redirect(base_url().'Transaction/penyewaan');
    	}
 

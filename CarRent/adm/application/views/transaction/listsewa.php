@@ -24,6 +24,7 @@
                           <th>Lama Sewa</th>
                           <th>Total Biaya</th>
                           <th></th>
+													<th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -38,11 +39,22 @@
                           <td><?php echo $e['total_biaya'] ?></td>
                           <td>
                             <center>
-                            <a href="<?php echo base_url() ?>Transaction/ambilMobil/<?php echo $e['id_transaksi'] ?>/<?php echo $e['id_mobil'] ?>"><button class="btn btn-success">Diambil</button></a>
+														<?php
+															if($e['status']==0){ ?>
+																<a href="<?php echo base_url() ?>Transaction/ambilMobil/<?php echo $e['id_transaksi'] ?>/<?php echo $e['id_mobil'] ?>"><button class="btn btn-success">Diambil</button></a>
+														<?php }
+														?>
                             <a href="" data-toggle="modal" data-target="#edit<?php echo $no; ?>" style="padding: 0px; font-size: 1.1em"><p class="fa fa-edit"></p></a>&nbsp;&nbsp;
                             <a href="<?php echo base_url() ?>Transaction/hapusSewa/<?php echo $e['id_transaksi'] ?>" style="padding: 0px; font-size: 1.1em" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ?')"><p class="fa fa-trash"></p></a>&nbsp;&nbsp;
                             </center>
                           </td>
+													<td>
+														<?php
+															if($e['status']==2){ ?>
+																<span class="btn btn-danger">EXPIRED BI SUBI</span>
+														<?php }
+														?>
+													</td>
                         </tr>
                         <?php $no++; } ?>
                       </tbody>

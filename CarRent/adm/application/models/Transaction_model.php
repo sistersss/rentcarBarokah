@@ -22,7 +22,7 @@ class Transaction_model extends CI_Model {
 		$this->db->join('pelanggan', 'pelanggan.id_pelanggan=transaction.id_pelanggan');
 		$this->db->join('mobil','mobil.id_mobil=transaction.id_mobil');
 		$this->db->where('tgl_kembali IS NULL');
-		$this->db->where('status', '0');
+		$this->db->where('status=0 OR status=2');
 		$query = $this->db->get('transaction');
 		return $query->result_array();
 	}

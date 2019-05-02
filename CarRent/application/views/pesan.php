@@ -45,7 +45,7 @@
                     <label for="lama_pinjam" class="text-black">Lama Peminjaman </label>
                     <div class="row">
                     <div class="col-md-2">
-                      <input type="number" class="form-control" required="" id="lama_pinjam" name="lama_pinjam">
+                      <input type="number" min='1' class="form-control" required="" id="lama_pinjam" name="lama_pinjam">
                     </div>
                     <div class="col-md-1">
                       <h3>hari</h3>

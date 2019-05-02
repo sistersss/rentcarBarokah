@@ -1,4 +1,4 @@
-<div class="site-blocks-cover" style="background-image: url(<?php echo base_url() ?>assets/user/images/hero_1.jpg);" data-aos="fade">
+<div class="site-blocks-cover" style="background-image: url(<?php echo base_url() ?>assets/user/images/Mobil0.jpg);" data-aos="fade">
       <div class="container">
         <div class="row align-items-start align-items-md-center justify-content-end">
           
@@ -29,7 +29,7 @@
 										<?php if($mb['kuota_mobil']>0) { ?>
                     <a href="<?php echo base_url() ?>index.php/HomeUser/detailMobil/<?php echo $mb['id_mobil'] ?>"><button class="btn btn-success">PINJAM</button></a>
 										<?php } else { ?>
-											<button class="btn btn-success" style="background: grey">SOLD OUT</button>
+											<button class="btn btn-success" style="background: grey">DISEWA</button>
 										<?php } ?>
                   </div>
                 </div>
@@ -64,7 +64,7 @@
                     <?php if($ml['kuota_mobil']>0) { ?>
                     <a href="<?php echo base_url() ?>index.php/HomeUser/detailMobil/<?php echo $ml['id_mobil'] ?>"><button class="btn btn-success">PINJAM</button></a>
 										<?php } else { ?>
-											<button class="btn btn-success" style="background: grey">SOLD OUT</button>
+											<button class="btn btn-success" style="background: grey">DISEWA</button>
 										<?php } ?>
                   </div>
                 </div>

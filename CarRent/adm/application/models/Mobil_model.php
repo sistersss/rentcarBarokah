@@ -37,7 +37,7 @@ class Mobil_model extends CI_Model {
 		            	'no_polisi' => $this->input->post('no_polisi'),
 		            	'gambar' => $img,
 		            	'tahun_pembuatan' => $this->input->post('tahun_pembuatan'),
-		            	'kuota_mobil' => $this->input->post('kuota_mobil'),
+		            	'kuota_mobil' => 1,
 		            	'harga_sewa' => $this->input->post('harga_sewa'));
 		$this->db->insert("mobil", $object);
 	}
@@ -50,7 +50,6 @@ class Mobil_model extends CI_Model {
 		                'deskripsi' => $this->input->post('deskripsi'),
 		            	'no_polisi' => $this->input->post('no_polisi'),
 		            	'tahun_pembuatan' => $this->input->post('tahun_pembuatan'),
-		            	'kuota_mobil' => $this->input->post('kuota_mobil'),
 		            	'harga_sewa' => $this->input->post('harga_sewa'));
 		if ($img!=null) {
 			$object['gambar'] = $img;

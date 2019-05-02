@@ -70,5 +70,12 @@ class Mobil_model extends CI_Model {
 		            	'total_biaya' => $total_bayar);
 		$this->db->insert("transaction", $object);
 	}
+
+	public function updateKuota($id, $kuota)
+	{
+		$object = array('kuota_mobil' => $kuota);
+		$this->db->where('id_mobil', $id);
+		$this->db->update('mobil', $object);
+	}
 }
 ?>
