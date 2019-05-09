@@ -13,7 +13,8 @@
                   <th>Merk Mobil</th>
                   <th>Lama Sewa</th>
                   <th>Total Biaya</th>
-                  <th>Status Mobil</th>
+									<th>Status Mobil</th>
+									<th>Action</th>
                 </tr>
               </thead>
               <?php $num=1; foreach($histori as $h){ ?>
@@ -28,12 +29,26 @@
                       <?php 
                         if($h['tgl_kembali']!=NULL){
                           echo "Sudah Kembali";
+												}
+												else if($h['status']==3){
+													echo "Dibatalkan";
+												}
+                        else if($h['status']==1){
+                          echo "Sedang di Gunakan";
                         }
-                        else {
-                          echo "Belum Kembali";
+                        else if($h['status']==2) {
+                          echo "Expired";
+                        }
+                        else if($h['status']==0) {
+                          echo "Belum di Ambil";
                         }
                       ?>
-                    </td>
+										</td>
+										<td>
+											<?php if($h['tgl_kembali']==NULL && $h['status']==0){ ?>
+											<a href="<?php echo base_url() ?>index.php/HomeUser/batalkanTransaksi/<?php echo $h['id_transaksi'] ?>/<?php echo $h['id_mobil'] ?>"><button class="btn btn-danger">Batalkan</button></a>
+											<?php } ?>
+										</td>
                   </tr>
                 </tbody>
               <?php $num++; } ?>

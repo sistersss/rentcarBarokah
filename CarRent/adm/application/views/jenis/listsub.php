@@ -18,6 +18,7 @@
                         <tr>
                           <th>No</th>
                           <th>Subjenis Mobil</th>
+													<th>Kuota Mobil</th>
                           <th></th>
                         </tr>
                       </thead>
@@ -26,6 +27,7 @@
                         <tr>
                           <td><?php echo $no ?></td>
                           <td><?php echo $e['nama_subjenis'] ?></td>
+													<td><?php echo $e['jml_kuota'] ?></td>
                           <td>
                             <center>
                             <a href="" data-toggle="modal" data-target="#edit<?php echo $no; ?>" style="padding: 0px; font-size: 1.1em"><p class="fa fa-edit"></p></a>&nbsp;&nbsp;

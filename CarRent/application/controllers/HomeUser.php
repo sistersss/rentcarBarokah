@@ -90,6 +90,8 @@ class HomeUser extends CI_Controller {
 		if($mobil[0]['kuota_mobil']>=1) {
 			$total_bayar = $mobil[0]['harga_sewa']*$this->input->post('lama_pinjam');
 			$this->Mobil_model->addTransaction($id_mobil, $id_user, $total_bayar);
+			$kuota_sekarang = $mobil[0]['kuota_mobil']-1;
+			$this->Mobil_model->updateKuota($id_mobil, $kuota_sekarang);
 
 			$data['mobil'] = $mobil;
 			$data['tgl_pinjam'] = $this->input->post('tgl_pinjam');
@@ -107,6 +109,13 @@ class HomeUser extends CI_Controller {
 			$this->session->set_flashdata('kuota', 'Kuota Mobil Sudah Habis');
 			redirect(base_url());
 		}
+	}
+
+	public function batalkanTransaksi($id, $id_mobil)
+	{
+		$this->db->query("UPDATE transaction SET status=3 WHERE id_transaksi=".$id);
+		$this->db->query("UPDATE mobil SET kuota_mobil=(kuota_mobil+1) WHERE id_mobil=".$id_mobil);
+		redirect(base_url().'index.php/HomeUser/historiTransaksi/'.$this->session->userdata('id_pelanggan'));
 	}
 
 	public function sendEmail()

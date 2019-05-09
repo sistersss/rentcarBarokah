@@ -36,20 +36,27 @@ class User extends CI_Controller {
     
     		if ($cek == 1) {
     			$show = $this->User_model->getDataPelangganByUsername($username);
-    			$dlogin = array('id_pelanggan'=>$show->id_pelanggan,
-    							'nama_pelanggan'=>$show->nama_pelanggan);
-    			$this->session->set_userdata($dlogin);
-    			if($this->session->userdata('pesan')=='active'){
-    				redirect(base_url().'index.php/HomeUser/detailMobil/'.$this->session->userdata('id_pesan'));
+    			if($show->status==0){
+	    			$dlogin = array('id_pelanggan'=>$show->id_pelanggan,
+	    							'nama_pelanggan'=>$show->nama_pelanggan);
+	    			$this->session->set_userdata($dlogin);
+	    			if($this->session->userdata('pesan')=='active'){
+	    				redirect(base_url().'index.php/HomeUser/detailMobil/'.$this->session->userdata('id_pesan'));
+	    			}
+	    			else {
+	    				redirect(base_url().'index.php/HomeUser');
+	    			}
+	    			// echo "<script>alert('Berhasil Login');</script>";
     			}
     			else {
-    				redirect(base_url().'index.php/HomeUser');
+    				$this->session->set_flashdata('blacklist', 'Akun Anda Telah di Blacklist, Silahkan Hubungi Admin');
+    				redirect(base_url().'index.php/User');
     			}
-    			// echo "<script>alert('Berhasil Login');</script>";
     		}
     		else
     		{
-    			redirect(base_url());
+				$this->session->set_flashdata('ceklogin', 'Username atau Password Salah');
+    			redirect(base_url().'index.php/User');
     		}
 	    } else {
 			redirect(base_url());
@@ -69,7 +76,7 @@ class User extends CI_Controller {
     
     	if ($retype == $password) {
     		$this->User_model->addPelanggan();
-    		redirect(base_url());
+    		redirect(base_url().'index.php/User');
     	}
     	else
     	{

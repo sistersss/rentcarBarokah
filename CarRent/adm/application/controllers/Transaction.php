@@ -114,7 +114,7 @@ class Transaction extends CI_Controller {
    	public function ambilMobil($id, $id_mobil)
    	{
    		$this->Transaction_model->updateStatus($id);
-   		$this->db->query("UPDATE mobil SET kuota_mobil=(kuota_mobil-1) WHERE id_mobil=".$id_mobil);
+   		// $this->db->query("UPDATE mobil SET kuota_mobil=(kuota_mobil-1) WHERE id_mobil=".$id_mobil);
    		redirect(base_url().'Transaction/penyewaan');
    	}
 
