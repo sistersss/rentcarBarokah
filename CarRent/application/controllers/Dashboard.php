@@ -23,10 +23,13 @@ class Dashboard extends CI_Controller {
 		$data['title'] = 'Dashboard';
 		$this->load->model('Admin_model');
 		$data['notif'] = $this->Admin_model->getNotifikasi();
+<<<<<<< HEAD
 		$data['mobil_all'] = $this->Admin_model->getAllMobil();
 		$data['mobil_book'] = $this->Admin_model->getBookMobil();
 		$data['mobil_ava'] = $this->Admin_model->getAvaMobil();
 		$data['pelanggan_all'] = $this->Admin_model->getAllPelanggan();
+=======
+>>>>>>> 460e7e1d9e03539ede55e2bfe2fe208d77f5aeef
 		$data['content'] = $this->load->view('adm/dashboard',$data, TRUE);
 		$this->load->view('adm/element/main', $data);
 	}
@@ -67,7 +70,11 @@ class Dashboard extends CI_Controller {
 	{
 		if (isset($_POST['login'])) {
     		$username = $this->input->post('username');
+<<<<<<< HEAD
     		$password = md5($this->input->post('password'));
+=======
+    		$password = $this->input->post('password');
+>>>>>>> 460e7e1d9e03539ede55e2bfe2fe208d77f5aeef
     		$this->load->model('Admin_model');
     		$cek = $this->Admin_model->cekLogin($username, $password);
     

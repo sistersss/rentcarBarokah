@@ -11,7 +11,11 @@ class Admin_model extends CI_Model {
 
 	public function getNotifikasi()
 	{
+<<<<<<< HEAD
 		$this->db->select('pelanggan.nama_pelanggan');
+=======
+		$this->db->select('pelanggan.nama_pelanggan, COUNT(notifikasi.id_notif) as jml');
+>>>>>>> 460e7e1d9e03539ede55e2bfe2fe208d77f5aeef
 		$this->db->join('transaction','transaction.id_transaksi=notifikasi.id_transaksi');
 		$this->db->join('pelanggan','pelanggan.id_pelanggan=transaction.id_pelanggan');
 		$this->db->order_by('notifikasi.created_at', 'DESC');

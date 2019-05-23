@@ -27,6 +27,7 @@
                         <tr>
                           <td><?php echo $no ?></td>
                           <td><?php echo $e['nama_subjenis'] ?></td>
+<<<<<<< HEAD
 													<!-- <?php
 														foreach($mobil as $me) {
 															if($me['id_subjenis']==$e['id_subjenis']){
@@ -38,6 +39,9 @@
 													?> -->
 													<!-- <td><?php echo $kuota ?></td> -->
                           <td><?php echo $e['jml_kuota'] ?></td>
+=======
+													<td><?php echo $e['jml_kuota'] ?></td>
+>>>>>>> 460e7e1d9e03539ede55e2bfe2fe208d77f5aeef
                           <td>
                             <center>
                             <a href="" data-toggle="modal" data-target="#edit<?php echo $no; ?>" style="padding: 0px; font-size: 1.1em"><p class="fa fa-edit"></p></a>&nbsp;&nbsp;

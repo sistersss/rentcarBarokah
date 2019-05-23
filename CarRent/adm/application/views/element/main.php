@@ -72,6 +72,7 @@
                     <li><a href="<?php echo base_url() ?>Dashboard/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
+<<<<<<< HEAD
 								<?php
 									$jml=count($notif);
 								?>
@@ -84,6 +85,15 @@
 										<?php 
 											if($jml>0) { foreach($notif as $n) { 		
 										?>
+=======
+                <li role="presentation" class="dropdown">
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o" style="color: white"></i>
+                    <span class="badge bg-red"><?php echo $notif[0]['jml']; ?></span>
+                  </a>
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                    <?php if($notif[0]['jml']>0) { foreach($notif as $n) { ?>
+>>>>>>> 460e7e1d9e03539ede55e2bfe2fe208d77f5aeef
                     <li>
                       <a>
                         <span>
@@ -94,6 +104,7 @@
                         </span>
                       </a>
                     </li>
+<<<<<<< HEAD
 										<?php } ?>
 										<li style="background: #5F9EA0;">
 										<a href="<?php echo base_url() ?>Transaction/penyewaan">
@@ -103,6 +114,9 @@
                       </a>
                     </li>
 										<?php } else { ?>
+=======
+                    <?php }} else { ?>
+>>>>>>> 460e7e1d9e03539ede55e2bfe2fe208d77f5aeef
                     <li>
                       <a>
                         <span class="message">

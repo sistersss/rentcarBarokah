@@ -26,6 +26,7 @@ class Admin_model extends CI_Model {
 		return $query->result_array();
 	}
 
+<<<<<<< HEAD
 	public function getAllMobil()
 	{
 		$query = $this->db->get('mobil');
@@ -52,12 +53,18 @@ class Admin_model extends CI_Model {
 		return $query->num_rows();
 	}
 
+=======
+>>>>>>> 460e7e1d9e03539ede55e2bfe2fe208d77f5aeef
 	public function editAdmin($id)
 	{
 		$object = array('nama_admin' => $this->input->post('nama_admin'),
 						'username' => $this->input->post('username'));
 		if($this->input->post('password') != ""){
+<<<<<<< HEAD
 			$object['password'] = md5($this->input->post('password'));
+=======
+			$object['password'] = $this->input->post('password');
+>>>>>>> 460e7e1d9e03539ede55e2bfe2fe208d77f5aeef
 		}
 		$this->db->where('id_admin', $id);
 		$this->db->update("admin", $object);
