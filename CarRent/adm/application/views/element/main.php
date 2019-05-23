@@ -72,6 +72,55 @@
                     <li><a href="<?php echo base_url() ?>Dashboard/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
+								<?php
+									$jml=count($notif);
+								?>
+                <li role="presentation" class="dropdown">
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o" style="color: white"></i>
+                    <span class="badge bg-red"><?php echo $jml; ?></span>
+                  </a>
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+										<?php 
+											if($jml>0) { foreach($notif as $n) { 		
+										?>
+                    <li>
+                      <a>
+                        <span>
+                          <span><b>Transaksi Kadaluarsa</b></span>
+                        </span>
+                        <span class="message">
+                          Pelanggan <b><?php echo $n['nama_pelanggan'] ?></b> Belum Mengambil Mobilnya, Maka Transaksi Akan di Batalkan
+                        </span>
+                      </a>
+                    </li>
+										<?php } ?>
+										<li style="background: #5F9EA0;">
+										<a href="<?php echo base_url() ?>Transaction/penyewaan">
+                        <span>
+                          <center><span style="color: black"><b>Show All</b></span></center>
+                        </span>
+                      </a>
+                    </li>
+										<?php } else { ?>
+                    <li>
+                      <a>
+                        <span class="message">
+                          Belum Ada Notifikasi
+                        </span>
+                      </a>
+                    </li>
+                    <?php } ?>
+                    <!-- <li>
+                      <div class="text-center">
+                        <a>
+                          <strong>See All Alerts</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </div>
+                    </li> -->
+                  </ul>
+                </li>
               </ul>
             </nav>
           </div>
@@ -140,6 +189,8 @@
         toastr.error("<?php echo $this->session->flashdata('adduserpass'); ?>");
     <?php } else if($this->session->flashdata('admin')){ ?>
         toastr.error("<?php echo $this->session->flashdata('admin'); ?>");
+    <?php } else if($this->session->flashdata('nopol')){ ?>
+        toastr.error("<?php echo $this->session->flashdata('nopol'); ?>");
     <?php } ?>
 </script>
   </body>

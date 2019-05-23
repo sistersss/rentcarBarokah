@@ -22,6 +22,7 @@
                           <th>Email</th>
                           <th>Nomor Telepon</th>
                           <th>Username</th>
+                          <th>Status</th>
                           <th></th>
                         </tr>
                       </thead>
@@ -34,6 +35,13 @@
                           <td><?php echo $e['email'] ?></td>
                           <td><?php echo $e['no_telp'] ?></td>
                           <td><?php echo $e['username'] ?></td>
+                          <td>
+                            <?php 
+                              if($e['status']==1){
+                                echo "<span class='btn btn-primary' style='background: grey;'>BLACKLIST</span>";
+                              }
+                            ?>
+                          </td>
                           <td>
                             <center>
                             <a href="" data-toggle="modal" data-target="#edit<?php echo $no; ?>" style="padding: 0px; font-size: 1.1em"><p class="fa fa-edit"></p></a>&nbsp;&nbsp;

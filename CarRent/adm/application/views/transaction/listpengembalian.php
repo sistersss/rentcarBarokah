@@ -20,6 +20,7 @@
                           <th>Tanggal Sewa</th>
                           <th>Lama Sewa</th>
                           <th>Total Biaya</th>
+                          <th>Denda</th>
                           <th></th>
                         </tr>
                       </thead>
@@ -33,6 +34,20 @@
                           <td><?php echo $e['tgl_sewa'] ?></td>
                           <td><?php echo $e['lama_sewa'] ?></td>
                           <td><?php echo $e['total_biaya'] ?></td>
+                          <td>
+                            <?php 
+                              $awal  = new DateTime($e['tgl_sewa']);
+                              $akhir = new DateTime(date('Y-m-d H:i:s')); // Waktu sekarang
+                              $diff  = $awal->diff($akhir);
+                                $telat = $diff->d - $e['lama_sewa'];
+                                if($telat > 0) {
+                                  echo $denda = 100000*$telat;
+                                }
+                                else {
+                                  echo $denda = 0;
+                                }
+                            ?>
+                          </td>
                           <td>
                             <center>
                             <a href="<?php echo base_url() ?>Transaction/kembaliMobil/<?php echo $e['id_transaksi'] ?>/<?php echo $e['id_mobil'] ?>"><button class="btn btn-success">Dikembalikan</button></a>

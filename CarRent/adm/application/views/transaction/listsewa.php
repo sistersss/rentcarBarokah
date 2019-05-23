@@ -24,6 +24,7 @@
                           <th>Lama Sewa</th>
                           <th>Total Biaya</th>
                           <th></th>
+													<th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -38,17 +39,29 @@
                           <td><?php echo $e['total_biaya'] ?></td>
                           <td>
                             <center>
-                            <a href="<?php echo base_url() ?>Transaction/ambilMobil/<?php echo $e['id_transaksi'] ?>/<?php echo $e['id_mobil'] ?>"><button class="btn btn-success">Diambil</button></a>
-                            <a href="" data-toggle="modal" data-target="#edit<?php echo $no; ?>" style="padding: 0px; font-size: 1.1em"><p class="fa fa-edit"></p></a>&nbsp;&nbsp;
-                            <a href="<?php echo base_url() ?>Transaction/hapusSewa/<?php echo $e['id_transaksi'] ?>" style="padding: 0px; font-size: 1.1em" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ?')"><p class="fa fa-trash"></p></a>&nbsp;&nbsp;
+														<?php
+															if($e['stat']==0){ ?>
+																<a href="<?php echo base_url() ?>Transaction/ambilMobil/<?php echo $e['id_transaksi'] ?>/<?php echo $e['id_mobil'] ?>"><button class="btn btn-success">Diambil</button></a>
+														<?php }
+														?>
+                            <!-- <a href="" data-toggle="modal" data-target="#edit<?php echo $no; ?>" style="padding: 0px; font-size: 1.1em"><p class="fa fa-edit"></p></a>&nbsp;&nbsp;
+                            <a href="<?php echo base_url() ?>Transaction/hapusSewa/<?php echo $e['id_transaksi'] ?>" style="padding: 0px; font-size: 1.1em" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ?')"><p class="fa fa-trash"></p></a>&nbsp;&nbsp; -->
                             </center>
                           </td>
+													<td>
+														<?php
+															if($e['stat']==2){ ?>
+																<span class="label label-warning">EXPIRED</span>
+														<?php } else if($e['stat']==3){ ?>
+                                <span class="label label-danger">DIBATALKAN</span>
+                            <?php } ?>
+													</td>
                         </tr>
                         <?php $no++; } ?>
                       </tbody>
                     </table>
                     <div class="clearfix" style="padding-bottom: 20px"></div>
-</div>
+</div><!-- 
 <div class="modal fade bs-example-modal-lg" id="add" tabindex="-1" role="dialog" aria-hidden="true">
   <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="<?php echo base_url() ?>Transaction/tambahSewa" method="POST" enctype="multipart/form-data">
   <div class="modal-dialog modal-lg">
@@ -129,7 +142,7 @@
     </div>
   </div>
   </form>
-</div>
+</div> -->
 <script src="<?php echo base_url() ?>assets/vendors/jquery/dist/jquery.min.js"></script>
 <script src="<?php echo base_url() ?>assets/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url() ?>assets/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -152,7 +165,7 @@
             oTable.fnFilter($(this).val()).draw() ;
       });
     </script> 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     $(document).ready(function() {
 
         $('select[name="jenis_mobil"]').on('change', function() {
@@ -221,4 +234,4 @@
             document.getElementById("total_bayar").value = harga*lama;
         });
     });
-</script>
+</script> -->

@@ -87,64 +87,63 @@ class HomeUser extends CI_Controller {
 	{
 		$id_user = $this->session->userdata('id_pelanggan');
 		$mobil = $this->Mobil_model->getDataMobilById($id_mobil);
-		$total_bayar = $mobil[0]['harga_sewa']*$this->input->post('lama_pinjam');
-		$this->Mobil_model->addTransaction($id_mobil, $id_user, $total_bayar);
+		if($mobil[0]['kuota_mobil']>=1) {
+			$total_bayar = $mobil[0]['harga_sewa']*$this->input->post('lama_pinjam');
+			$this->Mobil_model->addTransaction($id_mobil, $id_user, $total_bayar);
+			$kuota_sekarang = $mobil[0]['kuota_mobil']-1;
+			$this->Mobil_model->updateKuota($id_mobil, $kuota_sekarang);
 
-		$data['mobil'] = $mobil;
-		$data['tgl_pinjam'] = $this->input->post('tgl_pinjam');
-		$data['lama_pinjam'] = $this->input->post('lama_pinjam');
-		$data['total_bayar'] = $total_bayar;
-		$data['kategori'] = $this->Kategori_model->getDataKategoriMobil();
-		$this->session->unset_userdata('pesan');
-		$this->session->unset_userdata('id_pesan');
-		$data['content'] = $this->load->view('cetak',$data, TRUE);
-		$this->load->view('element/mainuser', $data);
+			$data['mobil'] = $mobil;
+			$data['tgl_pinjam'] = $this->input->post('tgl_pinjam');
+			$data['lama_pinjam'] = $this->input->post('lama_pinjam');
+			$data['total_bayar'] = $total_bayar;
+			$data['kategori'] = $this->Kategori_model->getDataKategoriMobil();
+			$data['transaksi'] = $this->Mobil_model->getDataTransaksiMobil();
+			$data['keterangan'] = $this->User_model->getKeterangan();
+			$this->session->unset_userdata('pesan');
+			$this->session->unset_userdata('id_pesan');
+			$data['content'] = $this->load->view('cetak',$data, TRUE);
+			$this->load->view('element/mainuser', $data);
+		}
+		else {
+			$this->session->set_flashdata('kuota', 'Kuota Mobil Sudah Habis');
+			redirect(base_url());
+		}
+	}
+
+	public function batalkanTransaksi($id, $id_mobil)
+	{
+		$this->db->query("UPDATE transaction SET status=3 WHERE id_transaksi=".$id);
+		$this->db->query("UPDATE mobil SET kuota_mobil=(kuota_mobil+1) WHERE id_mobil=".$id_mobil);
+		redirect(base_url().'index.php/HomeUser/historiTransaksi/'.$this->session->userdata('id_pelanggan'));
 	}
 
 	public function sendEmail()
 	{
-		ini_set("SMTP","smtp.gmail.com");
+		$from_email = $this->input->post('c_email');
+		$config = array(
+			'protocol' => 'smtp',
+			'smtp_host' => 'ssl://smtp.googlemail.com',
+			'smtp_port' => 465,
+			'smtp_user' => 'nania.anabela22@gmail.com',
+			'smtp_pass' => '25021999',
+			'mailtype' => 'html',
+			'charset' => 'iso-8859-1'
+		);
+		$this->load->library('email', $config);
+		$this->email->set_newline("\r\n");
+		$this->email->from($from_email, 'Identification');
+        $this->email->to("nania.anabela22@gmail.com");
+        $this->email->subject($this->input->post('c_subject'));
+        $this->email->message($this->input->post('c_message'));
+        //Send mail
+        if($this->email->send()){
+            echo "SUKSES";
+        }
+        else{
+            echo "GAGAL";
+        }
 
-		// $ToEmail = 'andhikaadjie23@gmail.com'; 
-	 //    $EmailSubject = $this->input->post('c_subject'); 
-	 //    $mailheader = "From: ".$this->input->post('c_email')."\r\n"; 
-	 //    $mailheader .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
-	 //    $MESSAGE_BODY = $this->input->post('c_message');
-	 //    mail($ToEmail, $EmailSubject, $MESSAGE_BODY, $mailheader) or die ("Failure"); 
-
-		$this->load->library('email');
-
-		       //SMTP & mail configuration
-				$config = array(
-					'protocol' => 'smtp',
-					'mailtype'=> 'text',
-					'crlf' => '\r\n',
-					'wordwrap'=>TRUE,
-					'newline'=>'\r\n',
-					'validate'=>FALSE,
-					'smtp_host' => 'smtp.gmail.com',
-					'smtp_port' => 587,
-					'smtp_user' => 'andhikaadjie23@gmail.com',
-					'smtp_pass' => '05November1996',
-					'charset' => 'utf-8'
-				);
-				$this->email->initialize($config);
-
-		       //Email content
-
-				$this->email->from('noreply@kuliahonline360.com', 'No-Reply KulOn');
-				$this->email->to('andhikaadjie23@gmail.com');				
-				$this->email->subject('Lupa Password');
-				// 		$message = "<p>This email has been sent as a request to reset our password</p>";
-		  //          	$message .= "<p><a href='admin.kuliahonline360.com/user/forget_password/".$check['code']."'>Click here </a>if you want to reset your password,
-		  //                      if not, then ignore</p>";
-				$message = 'asgdhsajd';
-				$this->email->message($message);
-				if ($this->email->send()) {
-					echo "SUKSES";
-				}
-				else {
-					echo "GAGAL";
-				}
+		
 	}
 }

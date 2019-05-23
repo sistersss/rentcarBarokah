@@ -20,7 +20,8 @@
                           <th>Tanggal Sewa</th>
                           <th>Lama Sewa</th>
                           <th>Total Biaya</th>
-                          <th></th>
+                          <th>Denda</th>
+                          <!-- <th></th> -->
                         </tr>
                       </thead>
                       <tbody>
@@ -33,11 +34,12 @@
                           <td><?php echo $e['tgl_sewa'] ?></td>
                           <td><?php echo $e['lama_sewa'] ?></td>
                           <td><?php echo $e['total_biaya'] ?></td>
-                          <td>
+                          <td><?php echo $e['denda'] ?></td>
+                          <!-- <td>
                             <center>
                             <a href="<?php echo base_url() ?>Transaction/hapusKembali/<?php echo $e['id_transaksi'] ?>" style="padding: 0px; font-size: 1.1em" onclick="return confirm('Anda Yakin Ingin Menghapus Data Ini ?')"><p class="fa fa-trash"></p></a>&nbsp;&nbsp;
                             </center>
-                          </td>
+                          </td> -->
                         </tr>
                         <?php $no++; } ?>
                       </tbody>

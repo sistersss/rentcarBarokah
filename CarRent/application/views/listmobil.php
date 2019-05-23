@@ -20,7 +20,11 @@
                     <h3><a href="#"><?php echo $mb['merk_mobil'] ?></a></h3>
                     <p class="mb-0"><?php echo $mb['nama_jenis'] ?></p>
                     <p class="text-primary font-weight-bold"><?php echo "Rp.".number_format($mb['harga_sewa'],0,"",".") ?></p>
+                    <?php if($mb['kuota_mobil']>0) { ?>
                     <a href="<?php echo base_url() ?>index.php/HomeUser/detailMobil/<?php echo $mb['id_mobil'] ?>"><button class="btn btn-success">PINJAM</button></a>
+										<?php } else { ?>
+											<button class="btn btn-success" style="background: grey">DISEWA</button>
+										<?php } ?>
                   </div>
                 </div>
               </div>

@@ -21,6 +21,8 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		$data['title'] = 'Dashboard';
+		$this->load->model('Admin_model');
+		$data['notif'] = $this->Admin_model->getNotifikasi();
 		$data['content'] = $this->load->view('dashboard',$data, TRUE);
 		$this->load->view('element/main', $data);
 	}
@@ -46,6 +48,7 @@ class Dashboard extends CI_Controller {
 		}
 		else {
 			$data['admin'] = $this->Admin_model->getAdminById($id);
+			$data['notif'] = $this->Admin_model->getNotifikasi();
 			$data['content'] = $this->load->view('element/settingadmin',$data, TRUE);
 			$this->load->view('element/main', $data);
 		}

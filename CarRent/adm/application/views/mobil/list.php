@@ -1,3 +1,4 @@
+<script src="<?php echo base_url() ?>assets/vendors/jquery/dist/jquery.min.js"></script>
 <div class="">
             <div class="page-title">
               <div class="title_left">
@@ -20,7 +21,7 @@
                           <th>Merk Mobil</th>
                           <th>Nomor Polisi</th>
                           <th>Harga Sewa</th>
-                          <th>Kuota</th>
+                          <!-- <th>Kuota</th> -->
                           <th></th>
                         </tr>
                       </thead>
@@ -31,7 +32,7 @@
                           <td><?php echo $e['merk_mobil'] ?></td>
                           <td><?php echo $e['no_polisi']; ?></td>
                           <td><?php echo $e['harga_sewa'] ?></td>
-                          <td><?php echo $e['kuota_mobil'] ?></td>
+                          <!-- <td><?php echo $e['kuota_mobil'] ?></td> -->
                           <td>
                             <center>
                             <a href="" data-toggle="modal" data-target=".gambar<?php echo $no; ?>"><p class="fa fa-eye"></p></a>&nbsp;&nbsp;
@@ -80,6 +81,7 @@
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="merk_mobil">Jenis Mobil 
                                   </label>
                                   <div class="col-md-6 col-sm-6 col-xs-12">
+																		<input type="hidden" name="jen" id="jen<?php echo $num ?>" value="<?php echo $m['id_jenis'] ?>">
                                     <select required="required" class="form-control col-md-7 col-xs-12" name="jenis" id="jenis">
                                       <option>--Pilih Jenis Mobil--</option>
                                       <?php foreach($jenis as $j) { ?>
@@ -92,6 +94,27 @@
                                     </select>
                                   </div>
                                 </div>
+																<div class="form-group">
+																	<label class="control-label col-md-3 col-sm-3 col-xs-12" for="merk_mobil">Subjenis Mobil 
+																	</label>
+																	<div class="col-md-6 col-sm-6 col-xs-12">
+																		<input type="hidden" name="sub" id="sub<?php echo $num ?>" value="<?php echo $m['id_subjenis'] ?>">
+																		<select required="required" class="form-control col-md-7 col-xs-12" name="subjenis" id="subjenis">
+																			<option>--Pilih Subjenis Mobil--</option>
+																			<?php foreach($subjenis as $sub) { ?>
+																				<?php if($sub['id_jenis']==$m['id_jenis']){ ?>
+																					<?php if($sub['id_subjenis']==$m['id_subjenis']){ ?>
+																						<option value="<?php echo $sub['id_subjenis'] ?>" selected><?php echo $sub['nama_subjenis'] ?></option>
+																					<?php } else { ?>
+																						<option value="<?php echo $sub['id_subjenis'] ?>"><?php echo $sub['nama_subjenis'] ?></option>
+																					<?php } ?>
+																				<?php } else { ?>
+																					<option value="">ERROR</option>
+																				<?php } ?>
+																			<?php } ?>
+																		</select>
+																	</div>
+																</div>
                                 <div class="form-group">
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="gambar">Gambar 
                                   </label>
@@ -121,13 +144,6 @@
                                   </div>
                                 </div>
                                 <div class="form-group">
-                                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kuota_mobil">Kuota Mobil 
-                                  </label>
-                                  <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="kuota_mobil" name="kuota_mobil" value="<?php echo $m['kuota_mobil'] ?>" required="required" class="form-control col-md-7 col-xs-12">
-                                  </div>
-                                </div>
-                                <div class="form-group">
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="harga_sewa">Harga Sewa 
                                   </label>
                                   <div class="col-md-6 col-sm-6 col-xs-12">
@@ -149,6 +165,34 @@
                           </div>
                           </form>
                         </div>
+												<script>
+												$(document).ready(function() {
+												var ID = $('#jen<?php echo $num ?>').val();
+												var SUB = $("#sub<?php echo $num ?>").val();
+														if(ID) {
+																$.ajax({
+																		url: '<?php echo base_url() ?>Mobil/subjenisAjax/'+ID,
+																		type: "GET",
+																		dataType: "json",
+																		success:function(data) {
+																				$('#edit<?php echo $num ?>').find('select[name="subjenis"]').empty();
+																				$('#edit<?php echo $num ?>').find('select[name="subjenis"]').append('<option>--Pilih Subjenis Mobil--</option>');
+																				$.each(data, function(key, value) {
+																					if(SUB==value.id_subjenis){
+																						$('#edit<?php echo $num ?>').find('select[name="subjenis"]').append('<option value="'+ value.id_subjenis +'" selected>'+ value.nama_subjenis +'</option>');
+																					}
+																					else {
+																						$('#edit<?php echo $num ?>').find('select[name="subjenis"]').append('<option value="'+ value.id_subjenis +'">'+ value.nama_subjenis +'</option>');
+																					}
+																						console.log(value.id_subjenis);
+																				});
+																		}
+																});
+														}else{
+																$('#edit<?php echo $num ?>').find('select[name="subjenis"]').empty();
+														}
+													});
+												</script>
 <?php $num++; } ?>
 <div class="modal fade bs-example-modal-lg" id="add" tabindex="-1" role="dialog" aria-hidden="true">
   <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="<?php echo base_url() ?>Mobil/tambahMobil" method="POST" enctype="multipart/form-data">
@@ -216,13 +260,6 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kuota_mobil">Kuota Mobil 
-          </label>
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            <input type="text" id="kuota_mobil" name="kuota_mobil" required="required" class="form-control col-md-7 col-xs-12">
-          </div>
-        </div>
-        <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="harga_sewa">Harga Sewa 
           </label>
           <div class="col-md-6 col-sm-6 col-xs-12">
@@ -244,7 +281,6 @@
   </div>
   </form>
 </div>
-<script src="<?php echo base_url() ?>assets/vendors/jquery/dist/jquery.min.js"></script>
 <script src="<?php echo base_url() ?>assets/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url() ?>assets/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
     <script src="<?php echo base_url() ?>assets/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>

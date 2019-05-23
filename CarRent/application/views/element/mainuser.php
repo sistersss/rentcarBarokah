@@ -55,6 +55,13 @@
   <script src="<?php echo base_url() ?>assets/user/js/aos.js"></script>
 
   <script src="<?php echo base_url() ?>assets/user/js/main.js"></script>
-    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<script type="text/javascript">
+
+    <?php if($this->session->flashdata('kuota')){  ?>
+        toastr.error("<?php echo $this->session->flashdata('kuota'); ?>");
+    <?php } ?>
+</script>
   </body>
 </html>
