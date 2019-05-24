@@ -8,6 +8,11 @@ class Jenis extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('Jenis_model');
+<<<<<<< HEAD
+		$this->load->model('Mobil_model');
+=======
+>>>>>>> 460e7e1d9e03539ede55e2bfe2fe208d77f5aeef
+		$this->load->model('Admin_model');
 		$this->load->helper('url', 'form');
 		$this->load->library('form_validation');
 
@@ -17,6 +22,7 @@ class Jenis extends CI_Controller {
 	{
 		$data['title'] = "Daftar Jenis";
 		$data['jenis'] = $this->Jenis_model->getJenis();
+		$data['notif'] = $this->Admin_model->getNotifikasi();
 		$data['content'] = $this->load->view('jenis/list',$data, TRUE);
 		$this->load->view('element/main', $data);
 	}
@@ -25,6 +31,11 @@ class Jenis extends CI_Controller {
 	{
 		$data['title'] = "Daftar Subjenis";
 		$data['subjenis'] = $this->Jenis_model->getSubjenis($id);
+<<<<<<< HEAD
+		$data['mobil'] = $this->Mobil_model->getMobil();
+=======
+>>>>>>> 460e7e1d9e03539ede55e2bfe2fe208d77f5aeef
+		$data['notif'] = $this->Admin_model->getNotifikasi();
 		$data['content'] = $this->load->view('jenis/listsub',$data, TRUE);
 		$this->load->view('element/main', $data);
 	}

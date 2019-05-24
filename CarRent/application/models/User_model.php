@@ -9,6 +9,12 @@ class User_model extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function getKeterangan()
+	{
+		$query = $this->db->get('keterangan');
+		return $query->result_array();
+	}
+
 	public function cekLogin($username, $password)
 	{
 		$this->db->where('username', $username);

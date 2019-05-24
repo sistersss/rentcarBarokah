@@ -34,6 +34,7 @@
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url() ?>assets/build/css/custom.min.css" rel="stylesheet">
+    <script type="text/javascript" src="<?php echo base_url() ?>assets/ckeditor/ckeditor.js"></script>
   </head>
 
   <body class="nav-md" style="background: #202322">
@@ -69,6 +70,69 @@
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
                     <li><a href="<?php echo base_url() ?>Dashboard/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+<<<<<<< HEAD
+								<?php
+									$jml=count($notif);
+								?>
+                <li role="presentation" class="dropdown">
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o" style="color: white"></i>
+                    <span class="badge bg-red"><?php echo $jml; ?></span>
+                  </a>
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+										<?php 
+											if($jml>0) { foreach($notif as $n) { 		
+										?>
+=======
+                <li role="presentation" class="dropdown">
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o" style="color: white"></i>
+                    <span class="badge bg-red"><?php echo $notif[0]['jml']; ?></span>
+                  </a>
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                    <?php if($notif[0]['jml']>0) { foreach($notif as $n) { ?>
+>>>>>>> 460e7e1d9e03539ede55e2bfe2fe208d77f5aeef
+                    <li>
+                      <a>
+                        <span>
+                          <span><b>Transaksi Kadaluarsa</b></span>
+                        </span>
+                        <span class="message">
+                          Pelanggan <b><?php echo $n['nama_pelanggan'] ?></b> Belum Mengambil Mobilnya, Maka Transaksi Akan di Batalkan
+                        </span>
+                      </a>
+                    </li>
+<<<<<<< HEAD
+										<?php } ?>
+										<li style="background: #5F9EA0;">
+										<a href="<?php echo base_url() ?>Transaction/penyewaan">
+                        <span>
+                          <center><span style="color: black"><b>Show All</b></span></center>
+                        </span>
+                      </a>
+                    </li>
+										<?php } else { ?>
+=======
+                    <?php }} else { ?>
+>>>>>>> 460e7e1d9e03539ede55e2bfe2fe208d77f5aeef
+                    <li>
+                      <a>
+                        <span class="message">
+                          Belum Ada Notifikasi
+                        </span>
+                      </a>
+                    </li>
+                    <?php } ?>
+                    <!-- <li>
+                      <div class="text-center">
+                        <a>
+                          <strong>See All Alerts</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </div>
+                    </li> -->
                   </ul>
                 </li>
               </ul>
@@ -137,6 +201,10 @@
 
     <?php if($this->session->flashdata('adduserpass')){  ?>
         toastr.error("<?php echo $this->session->flashdata('adduserpass'); ?>");
+    <?php } else if($this->session->flashdata('admin')){ ?>
+        toastr.error("<?php echo $this->session->flashdata('admin'); ?>");
+    <?php } else if($this->session->flashdata('nopol')){ ?>
+        toastr.error("<?php echo $this->session->flashdata('nopol'); ?>");
     <?php } ?>
 </script>
   </body>

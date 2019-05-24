@@ -18,14 +18,30 @@
                         <tr>
                           <th>No</th>
                           <th>Subjenis Mobil</th>
+													<th>Kuota Mobil</th>
                           <th></th>
                         </tr>
                       </thead>
                       <tbody>
-                        <?php $no=1; foreach($subjenis as $e) { ?>
+                        <?php $kuota=0; $no=1; foreach($subjenis as $e) { ?>
                         <tr>
                           <td><?php echo $no ?></td>
                           <td><?php echo $e['nama_subjenis'] ?></td>
+<<<<<<< HEAD
+													<!-- <?php
+														foreach($mobil as $me) {
+															if($me['id_subjenis']==$e['id_subjenis']){
+																if($me['kuota_mobil']>0){
+																	$kuota++;
+																}
+															}
+														}
+													?> -->
+													<!-- <td><?php echo $kuota ?></td> -->
+                          <td><?php echo $e['jml_kuota'] ?></td>
+=======
+													<td><?php echo $e['jml_kuota'] ?></td>
+>>>>>>> 460e7e1d9e03539ede55e2bfe2fe208d77f5aeef
                           <td>
                             <center>
                             <a href="" data-toggle="modal" data-target="#edit<?php echo $no; ?>" style="padding: 0px; font-size: 1.1em"><p class="fa fa-edit"></p></a>&nbsp;&nbsp;
@@ -33,7 +49,7 @@
                             </center>
                           </td>
                         </tr>
-                        <?php $no++; } ?>
+                        <?php $no++; $kuota=0; } ?>
                       </tbody>
                     </table>
                     <div class="clearfix" style="padding-bottom: 20px"></div>

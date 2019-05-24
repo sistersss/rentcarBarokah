@@ -32,8 +32,9 @@
                 <?php } ?>
               </ul>
             </li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="<?php echo base_url() ?>index.php/HomeUser/contactUs">Contact Us</a></li>
             <?php if(!empty($this->session->userdata('id_pelanggan'))){ ?>
+            <li style="right: 16em; position: absolute;"><a href="<?php echo base_url() ?>index.php/HomeUser/historiTransaksi/<?php echo $this->session->userdata('id_pelanggan') ?>">Histori Transaksi</a></li>
             <li style="right: 10em; position: absolute;"><a href="<?php echo base_url() ?>index.php/User/logout">Logout</a></li>
             <?php } else { ?>
             <li style="right: 10em; position: absolute;"><a href="<?php echo base_url() ?>index.php/User">Login</a></li>

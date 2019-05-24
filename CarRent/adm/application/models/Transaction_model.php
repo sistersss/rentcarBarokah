@@ -3,21 +3,58 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Transaction_model extends CI_Model {
 	
+	public function getTransactionById($id)
+	{
+		$this->db->where('id_transaksi', $id);
+		$query = $this->db->get('transaction');
+		return $query->result_array();
+	}
+
+	public function getTransaction()
+	{
+<<<<<<< HEAD
+		$this->db->where('transaction.status', '0');
+=======
+		$this->db->where('status', '0');
+>>>>>>> 460e7e1d9e03539ede55e2bfe2fe208d77f5aeef
+		$query = $this->db->get('transaction');
+		return $query->result_array();
+	}
+
 	public function getSewa()
 	{
+		$this->db->select('pelanggan.*, mobil.*, transaction.*, transaction.status as stat');
 		$this->db->join('pelanggan', 'pelanggan.id_pelanggan=transaction.id_pelanggan');
 		$this->db->join('mobil','mobil.id_mobil=transaction.id_mobil');
 		$this->db->where('tgl_kembali IS NULL');
-		$this->db->where('status', '0');
+		$this->db->where('transaction.status=0 OR transaction.status=2 OR transaction.status=3');
 		$query = $this->db->get('transaction');
+		return $query->result_array();
+	}
+
+	public function getKeterangan()
+	{
+		$query = $this->db->get('keterangan');
 		return $query->result_array();
 	}
 
 	public function getKembali()
 	{
+		$this->db->select('pelanggan.*, mobil.*, transaction.*, transaction.status as stat');
 		$this->db->join('pelanggan', 'pelanggan.id_pelanggan=transaction.id_pelanggan');
 		$this->db->join('mobil','mobil.id_mobil=transaction.id_mobil');
 		$this->db->where('tgl_kembali IS NOT NULL');
+		$query = $this->db->get('transaction');
+		return $query->result_array();
+	}
+
+	public function getPengembalian()
+	{
+		$this->db->select('pelanggan.*, mobil.*, transaction.*, transaction.status as stat');
+		$this->db->join('pelanggan', 'pelanggan.id_pelanggan=transaction.id_pelanggan');
+		$this->db->join('mobil','mobil.id_mobil=transaction.id_mobil');
+		$this->db->where('tgl_kembali IS NULL');
+		$this->db->where('transaction.status', '1');
 		$query = $this->db->get('transaction');
 		return $query->result_array();
 	}
@@ -45,6 +82,34 @@ class Transaction_model extends CI_Model {
 		$this->db->update("transaction", $object);
 	}
 
+	public function updateKeterangan()
+	{
+		$object = array('keterangan' => $this->input->post('keterangan'));
+		$this->db->update("keterangan", $object);
+	}
+
+	public function kembaliMobil($id, $denda)
+	{
+		$object = array('tgl_kembali' => date('Y-m-d H:i:s'),
+		                'denda' => $denda);
+		$this->db->where('id_transaksi', $id);
+		$this->db->update("transaction", $object);
+	}
+
+	public function expiredTransaction($id)
+	{
+		$object = array('status' => '2');
+		$this->db->where('id_transaksi', $id);
+		$this->db->update("transaction", $object);
+	}
+
+	public function notifExpired($id)
+	{
+		$object = array('id_transaksi' => $id,
+		                'created_at' => date('Y-m-d H:i:s'));
+		$this->db->insert("notifikasi", $object);
+	}
+
 	public function updateStatus($id)
 	{
 		$object = array('status' => '1');
@@ -52,7 +117,7 @@ class Transaction_model extends CI_Model {
 		$this->db->update("transaction", $object);
 	}
 
-	public function deleteSewa($id)
+	public function deleteTransaksi($id)
 	{
 		$this->db->where('id_transaksi', $id);
 		$this->db->delete("transaction");

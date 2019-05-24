@@ -9,6 +9,20 @@ class Admin_model extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function getNotifikasi()
+	{
+<<<<<<< HEAD
+		$this->db->select('pelanggan.nama_pelanggan');
+=======
+		$this->db->select('pelanggan.nama_pelanggan, COUNT(notifikasi.id_notif) as jml');
+>>>>>>> 460e7e1d9e03539ede55e2bfe2fe208d77f5aeef
+		$this->db->join('transaction','transaction.id_transaksi=notifikasi.id_transaksi');
+		$this->db->join('pelanggan','pelanggan.id_pelanggan=transaction.id_pelanggan');
+		$this->db->order_by('notifikasi.created_at', 'DESC');
+		$query = $this->db->get('notifikasi');
+		return $query->result_array();
+	}
+
 	public function getAdminById($id)
 	{
 		$this->db->where('id_admin', $id);
@@ -19,8 +33,10 @@ class Admin_model extends CI_Model {
 	public function editAdmin($id)
 	{
 		$object = array('nama_admin' => $this->input->post('nama_admin'),
-						'username' => $this->input->post('username'),
-						'password' => $this->input->post('password'));
+						'username' => $this->input->post('username'));
+		if($this->input->post('password') != ""){
+			$object['password'] = $this->input->post('password');
+		}
 		$this->db->where('id_admin', $id);
 		$this->db->update("admin", $object);
 	}

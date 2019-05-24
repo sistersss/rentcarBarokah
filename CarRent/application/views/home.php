@@ -1,4 +1,4 @@
-<div class="site-blocks-cover" style="background-image: url(<?php echo base_url() ?>assets/user/images/hero_1.jpg);" data-aos="fade">
+<div class="site-blocks-cover" style="background-image: url(<?php echo base_url() ?>assets/user/images/Mobil0.jpg);" data-aos="fade">
       <div class="container">
         <div class="row align-items-start align-items-md-center justify-content-end">
           
@@ -26,7 +26,11 @@
                     <h3><a href="#"><?php echo $mb['merk_mobil'] ?></a></h3>
                     <p class="mb-0"><?php echo $mb['nama_jenis'] ?></p>
                     <p class="text-primary font-weight-bold"><?php echo "Rp.".number_format($mb['harga_sewa'],0,"",".") ?></p>
+										<?php if($mb['kuota_mobil']>0) { ?>
                     <a href="<?php echo base_url() ?>index.php/HomeUser/detailMobil/<?php echo $mb['id_mobil'] ?>"><button class="btn btn-success">PINJAM</button></a>
+										<?php } else { ?>
+											<button class="btn btn-success" style="background: grey">DISEWA</button>
+										<?php } ?>
                   </div>
                 </div>
               </div>
@@ -57,7 +61,11 @@
                     <h3><a href="#"><?php echo $ml['merk_mobil'] ?></a></h3>
                     <p class="mb-0"><?php echo $ml['nama_jenis'] ?></p>
                     <p class="text-primary font-weight-bold"><?php echo "Rp.".number_format($ml['harga_sewa'],0,"",".") ?></p>
+                    <?php if($ml['kuota_mobil']>0) { ?>
                     <a href="<?php echo base_url() ?>index.php/HomeUser/detailMobil/<?php echo $ml['id_mobil'] ?>"><button class="btn btn-success">PINJAM</button></a>
+										<?php } else { ?>
+											<button class="btn btn-success" style="background: grey">DISEWA</button>
+										<?php } ?>
                   </div>
                 </div>
               </div>
