@@ -44,7 +44,7 @@ class Dashboard extends CI_Controller {
     							'nama_admin'=>$show->nama_admin);
     			$this->session->set_userdata($dlogin);
     			redirect(base_url().'Dashboard');
-    			// echo "<script>alert('Berhasil Login');</script>";
+    			
     		}
     		else
     		{
