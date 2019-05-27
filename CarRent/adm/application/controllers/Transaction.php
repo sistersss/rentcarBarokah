@@ -18,11 +18,9 @@ class Transaction extends CI_Controller {
 		$this->load->library('ckeditor');
 
 		$this->ckeditor->basePath = base_url().'assets/ckeditor/';
-		$this->ckeditor->config['toolbar'] = array(
-                array('Bold','Italic','Underline','Strike','Subscript','Superscript')
-													);
-													
-													
+		// $this->ckeditor->config['toolbar'] = array(
+		// 	array('Bold','Italic','Underline','Strike','Subscript','Superscript')
+		// );
 		$this->ckeditor->config['language'] = 'en';
 		$this->ckeditor->config['width'] = '730px';
 		$this->ckeditor->config['height'] = '300px';
@@ -90,8 +88,9 @@ class Transaction extends CI_Controller {
 	{
 		$data['title'] = "Daftar Transaction";
 		$data['kembali'] = $this->Transaction_model->getKembali();
-		$data['notif'] = $this->Admin_model->getNotifikasi();
+		
 		$data['content'] = $this->load->view('transaction/listkembali',$data, TRUE);
+		$data['notif'] = $this->Admin_model->getNotifikasi();
 		$this->load->view('element/main', $data);
 	}
 
