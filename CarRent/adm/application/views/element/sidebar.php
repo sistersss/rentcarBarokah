@@ -15,6 +15,7 @@
                   <li><a href="<?php echo base_url() ?>Transaction/settingKeterangan"><i class="fa fa-home"></i>Setting Keterangan Transaksi</a></li>
                   <li><a href="<?php echo base_url() ?>Transaction/kembalikanMobil"><i class="fa fa-home"></i> Pengembalian Mobil </a></li>
                   <li><a href="<?php echo base_url() ?>Pelanggan/akunBlacklist/blacklist"><i class="fa fa-home"></i> Akun Blacklist </a></li>
+                  <li><a href="<?php echo base_url() ?>Dashboard/settingIklan"><i class="fa fa-home"></i> Setting Iklan </a></li>
                   <li><a href="<?php echo base_url() ?>Dashboard/settingAdmin/<?php echo $this->session->userdata('id_admin') ?>"><i class="fa fa-home"></i> Setting Akun Admin </a></li>
                 </ul>
               </div>

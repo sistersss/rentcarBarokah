@@ -12,11 +12,7 @@ class Transaction_model extends CI_Model {
 
 	public function getTransaction()
 	{
-<<<<<<< HEAD
 		$this->db->where('transaction.status', '0');
-=======
-		$this->db->where('status', '0');
->>>>>>> 460e7e1d9e03539ede55e2bfe2fe208d77f5aeef
 		$query = $this->db->get('transaction');
 		return $query->result_array();
 	}

@@ -1,10 +1,43 @@
-<div class="site-blocks-cover" style="background-image: url(<?php echo base_url() ?>assets/user/images/Mobil0.jpg);" data-aos="fade">
+<!-- <div class="site-blocks-cover" style="background-image: url(<?php echo base_url() ?>assets/user/images/Mobil0.jpg);" data-aos="fade">
       <div class="container">
         <div class="row align-items-start align-items-md-center justify-content-end">
           
         </div>
       </div>
+    </div> -->
+
+<?php if($iklan!=null){ ?>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <?php $no=0; foreach($iklan as $ik){ ?>
+      <li data-target="#myCarousel" data-slide-to="<?php echo $no ?>" <?php if($no==0){ echo 'class="active"'; } ?>></li>
+      <?php $no++;} ?>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <?php $no=0; foreach($iklan as $ik){ ?>
+      <div class="item <?php if($no==0){ echo 'active'; } ?>">
+        <img src="<?php echo base_url() ?>adm/assets/image/iklan/<?php echo $ik['gambar'] ?>" alt="<?php echo $ik['nama_iklan'] ?>" style="width:100%;">
+      </div>
+      <?php $no++;} ?>
     </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+<?php } ?>
 
 <div class="site-section block-3 site-blocks-2 bg-light">
       <div class="container">

@@ -12,11 +12,7 @@ class Jenis_model extends CI_Model {
 	public function getSubjenis($id)
 	{
 		$this->db->select('subjenis.*, count(mobil.id_mobil) as jml_kuota');
-<<<<<<< HEAD
 		$this->db->join('mobil', 'mobil.id_subjenis=subjenis.id_subjenis AND mobil.kuota_mobil>0', 'left');
-=======
-		$this->db->join('mobil', 'mobil.id_subjenis=subjenis.id_subjenis', 'left');
->>>>>>> 460e7e1d9e03539ede55e2bfe2fe208d77f5aeef
 		$this->db->where('id_jenis', $id);
 		$this->db->group_by('subjenis.id_subjenis');
 		$query = $this->db->get('subjenis');
